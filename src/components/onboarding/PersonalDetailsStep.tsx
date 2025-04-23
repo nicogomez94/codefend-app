@@ -1,13 +1,22 @@
 import React from 'react';
-import { Input } from '../../components/common';
+import { Input } from '../common';
+import type { OnboardingFormData } from '../../store/onboardingStore'; // Importa el tipo
 
 interface PersonalDetailsStepProps {
-  // Add props for form state and handlers later if needed
+  // Usa el tipo importado aquí
+  formData: Partial<Pick<OnboardingFormData, 'firstName' | 'lastName' | 'email' | 'phone'>>;
+  // Actualiza el tipo del primer argumento 'field'
+  updateFormData: (field: keyof OnboardingFormData, value: string) => void;
 }
 
-const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = () => {
+const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = ({ formData, updateFormData }) => {
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFormData(e.target.name as keyof OnboardingFormData, e.target.value);
+  };
+
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <p className="text-sm text-gray-600 mb-4">
         Bienvenido. Codefend es una plataforma completa para pentest continuo, detección temprana de amenazas, y protección de assets e infrastructura, empleando una red de hackers decentralizada especializados en diversas áreas.
       </p>
@@ -17,6 +26,8 @@ const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = () => {
         name="firstName"
         label="First name"
         placeholder="Enter your first name"
+        value={formData.firstName || ''}
+        onChange={handleChange}
         required
       />
       <Input
@@ -24,6 +35,8 @@ const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = () => {
         name="lastName"
         label="Last name"
         placeholder="Enter your last name"
+        value={formData.lastName || ''}
+        onChange={handleChange}
         required
       />
       <Input
@@ -32,18 +45,20 @@ const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = () => {
         type="email"
         label="Professional email"
         placeholder="Enter your professional email"
+        value={formData.email || ''}
+        onChange={handleChange}
         required
       />
-      {/* Basic phone input - enhance later if needed */}
       <Input
         id="phone"
         name="phone"
         type="tel"
         label="Phone number"
-        placeholder="+54 ..." // Add country code selector later
+        placeholder="+54 ..."
+        value={formData.phone || ''}
+        onChange={handleChange}
         required
       />
-      {/* Buttons will be handled by the parent OnboardingPage */}
     </form>
   );
 };

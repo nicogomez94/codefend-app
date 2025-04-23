@@ -1,47 +1,48 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import {
   OnboardingLayout,
   PersonalDetailsStep,
+  BusinessDetailsStep, // Importar el nuevo componente
 } from '../components/onboarding';
-import { Button, ProgressIndicator } from '../components/common'; 
+import { Button, ProgressIndicator } from '../components/common'; // Importar desde el índice principal
+import useOnboardingStore from '../store/onboardingStore'; // Importar el store
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 4; // Asegúrate que coincida con el store
 
 const OnboardingPage: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  // Add state for form data later
-  // const [formData, setFormData] = useState({});
+  // Usar el estado y las acciones del store
+  const { currentStep, formData, setFormData, nextStep, prevStep } = useOnboardingStore();
 
   const handleNext = () => {
-    // Add form validation logic here before proceeding
-    if (currentStep < TOTAL_STEPS) {
-      setCurrentStep(prev => prev + 1);
+    // Añadir validación si es necesario antes de llamar a nextStep()
+    if (currentStep === TOTAL_STEPS) {
+      console.log('Onboarding finished, data:', formData);
+      // Lógica de envío final, navegar al dashboard...
     } else {
-      // Handle final submission logic here
-      console.log('Onboarding finished');
-      // Navigate to dashboard, potentially
+      nextStep();
     }
   };
 
   const handlePrev = () => {
-    if (currentStep > 1) {
-      setCurrentStep(prev => prev - 1);
-    }
+    prevStep();
   };
+
+  const updateFormData = (field: keyof typeof formData, value: string) => {
+    setFormData({ [field]: value });
+  };
+
 
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
-        return <PersonalDetailsStep />;
+        return <PersonalDetailsStep formData={formData} updateFormData={updateFormData} />;
       case 2:
-        // return <BusinessDetailsStep />;
-        return <div>Step 2: Business Details Form Placeholder</div>;
+        // Usar el componente real
+        return <BusinessDetailsStep formData={formData} updateFormData={updateFormData} />;
       case 3:
-        // return <ConfirmEmailStep />;
+        // return <ConfirmEmailStep formData={formData} updateFormData={updateFormData} />;
         return <div>Step 3: Confirm Email Placeholder</div>;
       case 4:
-        // return <CreatePasswordStep />;
         return <div>Step 4: Create Password Form Placeholder</div>;
       default:
         return <div>Unknown Step</div>;
@@ -51,7 +52,7 @@ const OnboardingPage: React.FC = () => {
   return (
     <OnboardingLayout title="Nuevo usuario">
        <ProgressIndicator totalSteps={TOTAL_STEPS} currentStep={currentStep} />
-       <div className="min-h-[250px]"> {/* Added min-height for content area */}
+       <div className="min-h-[250px]">
          {renderStepContent()}
        </div>
        <div className="mt-6 flex justify-between items-center">
@@ -60,7 +61,7 @@ const OnboardingPage: React.FC = () => {
              Previo
            </Button>
          ) : (
-            <div></div> // Placeholder to keep spacing consistent
+            <div></div>
          )}
          <Button variant="primary" onClick={handleNext}>
            {currentStep === TOTAL_STEPS ? 'Finalizar' : 'Próximo'}
