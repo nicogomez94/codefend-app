@@ -1,18 +1,20 @@
-// filepath: c:\Users\nicol\github\codefend-nico\codefend-test\src\pages\OnboardingPage.tsx
+
 import React, { useState } from 'react';
-// We'll create these components in the next steps
-// import OnboardingLayout from '../components/onboarding/OnboardingLayout';
-// import PersonalDetailsStep from '../components/onboarding/PersonalDetailsStep';
-// import BusinessDetailsStep from '../components/onboarding/BusinessDetailsStep';
-// import ConfirmEmailStep from '../components/onboarding/ConfirmEmailStep';
-// import CreatePasswordStep from '../components/onboarding/CreatePasswordStep';
+import {
+  OnboardingLayout,
+  PersonalDetailsStep,
+} from '../components/onboarding';
+import { Button, ProgressIndicator } from '../components/common'; 
 
 const TOTAL_STEPS = 4;
 
 const OnboardingPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  // Add state for form data later
+  // const [formData, setFormData] = useState({});
 
   const handleNext = () => {
+    // Add form validation logic here before proceeding
     if (currentStep < TOTAL_STEPS) {
       setCurrentStep(prev => prev + 1);
     } else {
@@ -31,8 +33,7 @@ const OnboardingPage: React.FC = () => {
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
-        // return <PersonalDetailsStep />;
-        return <div>Step 1: Personal Details Form Placeholder</div>;
+        return <PersonalDetailsStep />;
       case 2:
         // return <BusinessDetailsStep />;
         return <div>Step 2: Business Details Form Placeholder</div>;
@@ -48,21 +49,24 @@ const OnboardingPage: React.FC = () => {
   };
 
   return (
-    <div> {/* Replace this div with OnboardingLayout later */}
-      <h1>Nuevo Usuario (Step {currentStep}/{TOTAL_STEPS})</h1>
-      {/* Progress indicator will go here */}
-      <div>
-        {renderStepContent()}
-      </div>
-      <div>
-        {currentStep > 1 && (
-          <button onClick={handlePrev}>Previo</button> // Replace with Button component
-        )}
-        <button onClick={handleNext}>
-          {currentStep === TOTAL_STEPS ? 'Finalizar' : 'Próximo'}
-        </button> {/* Replace with Button component */}
-      </div>
-    </div>
+    <OnboardingLayout title="Nuevo usuario">
+       <ProgressIndicator totalSteps={TOTAL_STEPS} currentStep={currentStep} />
+       <div className="min-h-[250px]"> {/* Added min-height for content area */}
+         {renderStepContent()}
+       </div>
+       <div className="mt-6 flex justify-between items-center">
+         {currentStep > 1 ? (
+           <Button variant="secondary" onClick={handlePrev}>
+             Previo
+           </Button>
+         ) : (
+            <div></div> // Placeholder to keep spacing consistent
+         )}
+         <Button variant="primary" onClick={handleNext}>
+           {currentStep === TOTAL_STEPS ? 'Finalizar' : 'Próximo'}
+         </Button>
+       </div>
+    </OnboardingLayout>
   );
 };
 
