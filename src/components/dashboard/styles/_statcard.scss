@@ -1,0 +1,38 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.stat-card {
+  @include card;
+
+  &__title {
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    color: $color-gray-500;
+    margin-bottom: $spacing-1;
+  }
+
+  &__value {
+    font-size: $font-size-4xl;
+    font-weight: 600;
+
+    &--red {
+      color: $color-danger;
+    }
+
+    &--blue {
+      color: $color-info;
+    }
+
+    &--gray {
+      color: $color-gray-600;
+    }
+  }
+
+  &--small {
+    text-align: center;
+
+    .stat-card__value {
+      font-size: $font-size-2xl;
+    }
+  }
+}

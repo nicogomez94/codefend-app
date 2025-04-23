@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.topbar {
+  @include card;
+  margin-bottom: $spacing-6;
+
+  &__content {
+    @include flex(row, space-between, flex-start);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 500;
+    color: $color-gray-800;
+    margin-bottom: $spacing-2;
+  }
+
+  &__description {
+    color: $color-gray-600;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-4;
+  }
+
+  &__button {
+    @include button($color-gray-800);
+  }
+
+  &__illustration {
+    width: 8rem;
+    height: 8rem;
+    position: relative;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      margin-top: $spacing-4;
+      align-self: center;
+    }
+  }
+}
