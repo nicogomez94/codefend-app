@@ -52,10 +52,10 @@ const OnboardingPage: React.FC = () => {
   return (
     <OnboardingLayout title="Nuevo usuario">
        <ProgressIndicator totalSteps={TOTAL_STEPS} currentStep={currentStep} />
-       <div className="min-h-[250px]">
+       <div className="min-h-[300px]">
          {renderStepContent()}
        </div>
-       <div className="mt-6 flex justify-between items-center">
+       <div className="mt-8 flex justify-between items-center">
          {currentStep > 1 ? (
            <Button variant="secondary" onClick={handlePrev}>
              Previo

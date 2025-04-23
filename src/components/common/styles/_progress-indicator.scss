@@ -1,0 +1,50 @@
+@use '../../../styles/variables' as *;
+
+.progress-indicator {
+  position: relative;
+  width: 100%;
+  margin: $spacing-6 0 $spacing-8; // espacio arriba y abajo
+
+  &__bar-bg {
+    width: 100%;
+    height: 4px; // altura de la barra
+    background-color: $color-gray-200;
+    border-radius: $border-radius-full;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__bar-fg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: $color-primary; // color de progreso
+    border-radius: $border-radius-full;
+    transition: width 0.3s ease;
+  }
+
+  &__steps {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+
+  &__step {
+    width: 12px; // tamaño del circulo
+    height: 12px;
+    background-color: $color-gray-200; // color inactivo
+    border-radius: 50%;
+    border: 2px solid $color-white; // borde blanco para separar de la barra
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+
+    &--active {
+      background-color: $color-primary; // color activo
+    }
+  }
+}

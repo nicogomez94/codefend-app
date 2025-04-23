@@ -1,0 +1,65 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.onboarding-layout {
+  min-height: 100vh;
+  @include flex(row, center, center);
+  background-color: $color-gray-100; // fondo general gris claro
+  padding: $spacing-8;
+
+  &__card {
+    background-color: $color-white;
+    border-radius: $border-radius-lg;
+    padding: $spacing-8 $spacing-10; // mas padding horizontal
+    box-shadow: $shadow-lg;
+    max-width: 500px; // ancho maximo
+    width: 100%;
+    text-align: center; // centrar logo y titulo
+  }
+
+  &__logo {
+    margin-bottom: $spacing-6;
+    svg {
+      height: 2rem; // ajusta tamaño
+      width: auto;
+      fill: $color-primary;
+    }
+    // estilos para el placeholder
+    p {
+      color: $color-primary;
+      font-weight: bold;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-2xl; // titulo mas grande
+    font-weight: 600;
+    color: $color-gray-800;
+    margin-bottom: $spacing-4; // espacio antes de la barra de progreso
+  }
+}
+
+// estilos generales para inputs dentro del onboarding
+.onboarding-input {
+  width: 100%;
+  padding: $spacing-2 $spacing-3;
+  border: 1px solid $color-gray-300;
+  border-radius: $border-radius;
+  font-size: $font-size-sm;
+  margin-top: $spacing-1; // espacio sobre el input
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 1px $color-primary;
+  }
+}
+
+.onboarding-label {
+  display: block;
+  text-align: left;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $color-gray-700;
+  margin-bottom: $spacing-1; // espacio bajo el label
+}

@@ -2,6 +2,9 @@
 @use 'mixins' as *;
 @use '../components/dashboard/styles/dashboard';
 @use '../components/onboard/styles/_onboard';
+@use '../components/onboarding/styles/onboarding-layout';
+@use '../components/onboarding/styles/onboarding-steps';
+@use '../components/common/styles/progress-indicator';
 
 * {
   box-sizing: border-box;

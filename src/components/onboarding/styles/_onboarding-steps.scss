@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.onboarding-step {
+  text-align: center; // centrar texto descriptivo y subtitulo
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $color-gray-600;
+    line-height: 1.6;
+    margin-bottom: $spacing-6; // mas espacio despues de la descripcion
+    text-align: left; // alinear descripcion a la izquierda
+  }
+
+  &__subtitle {
+    font-size: $font-size-base; // tamaño normal
+    font-weight: 600;
+    color: $color-gray-800;
+    margin-bottom: $spacing-4;
+    text-align: left; // alinear subtitulo a la izquierda
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4; // espacio entre campos del form
+    text-align: left; // asegurar que labels y inputs se alineen a la izquierda
+  }
+
+  // estilos especificos para el phone input si usas el placeholder
+  // si usas una libreria, necesitaras estilizar sus clases especificas
+  .phone-input-container { // asumiendo un div contenedor para el phone input
+     display: flex;
+     gap: $spacing-2;
+
+     select {
+       // estilos para el select de prefijo
+       padding: $spacing-2;
+       border: 1px solid $color-gray-300;
+       border-radius: $border-radius;
+       background-color: $color-gray-100;
+     }
+
+     input[type="tel"] {
+       flex-grow: 1; // que el input ocupe el resto
+     }
+  }
+}
