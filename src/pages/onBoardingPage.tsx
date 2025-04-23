@@ -2,22 +2,22 @@ import React from 'react';
 import {
   OnboardingLayout,
   PersonalDetailsStep,
-  BusinessDetailsStep, // Importar el nuevo componente
+  BusinessDetailsStep,
+  ConfirmEmailStep,
+  CreatePasswordStep
 } from '../components/onboarding';
-import { Button, ProgressIndicator } from '../components/common'; // Importar desde el índice principal
-import useOnboardingStore from '../store/onboardingStore'; // Importar el store
+import { Button, ProgressIndicator } from '../components/common';
+import useOnboardingStore from '../store/onboardingStore';
 
-const TOTAL_STEPS = 4; // Asegúrate que coincida con el store
+const TOTAL_STEPS = 4;
 
 const OnboardingPage: React.FC = () => {
-  // Usar el estado y las acciones del store
   const { currentStep, formData, setFormData, nextStep, prevStep } = useOnboardingStore();
 
   const handleNext = () => {
-    // Añadir validación si es necesario antes de llamar a nextStep()
     if (currentStep === TOTAL_STEPS) {
-      console.log('Onboarding finished, data:', formData);
-      // Lógica de envío final, navegar al dashboard...
+      console.log('Onboarding finalizado, datos:', formData);
+      // Lógica para enviar los datos y navegar al dashboard
     } else {
       nextStep();
     }
@@ -31,21 +31,18 @@ const OnboardingPage: React.FC = () => {
     setFormData({ [field]: value });
   };
 
-
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
         return <PersonalDetailsStep formData={formData} updateFormData={updateFormData} />;
       case 2:
-        // Usar el componente real
         return <BusinessDetailsStep formData={formData} updateFormData={updateFormData} />;
       case 3:
-        // return <ConfirmEmailStep formData={formData} updateFormData={updateFormData} />;
-        return <div>Step 3: Confirm Email Placeholder</div>;
+        return <ConfirmEmailStep formData={formData} updateFormData={updateFormData} />;
       case 4:
-        return <div>Step 4: Create Password Form Placeholder</div>;
+        return <CreatePasswordStep formData={formData} updateFormData={updateFormData} />;
       default:
-        return <div>Unknown Step</div>;
+        return <div>Paso desconocido</div>;
     }
   };
 

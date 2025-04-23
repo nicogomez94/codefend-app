@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 
-// Exporta esta interfaz
 export interface OnboardingFormData {
   firstName?: string;
   lastName?: string;
@@ -10,7 +9,8 @@ export interface OnboardingFormData {
   companyWebsite?: string;
   companySize?: string;
   languagePreference?: string;
-  // Añadir campos para los siguientes pasos (código de confirmación, contraseña)
+  verificationCode?: string;
+  password?: string;
 }
 
 interface OnboardingState {
@@ -19,10 +19,10 @@ interface OnboardingState {
   setFormData: (data: Partial<OnboardingFormData>) => void;
   nextStep: () => void;
   prevStep: () => void;
-  resetStore: () => void; // Para reiniciar si es necesario
+  resetStore: () => void;
 }
 
-const TOTAL_STEPS = 4; // Mantener sincronizado con la página
+const TOTAL_STEPS = 4;
 
 const useOnboardingStore = create<OnboardingState>((set) => ({
   currentStep: 1,
