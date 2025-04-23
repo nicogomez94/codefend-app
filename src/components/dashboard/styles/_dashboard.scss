@@ -1,0 +1,54 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *; 
+@use 'sass:color'; 
+
+// Usa @forward para re-exportar o @use para cargar estilos de componentes
+@use 'layout';
+@use 'sidebar';
+@use 'topbar';
+@use 'statcard';
+@use 'resourcecard';
+@use 'addsection';
+@use 'scanprogress';
+@use 'riskchart';
+@use 'team';
+
+// Dashboard page specific styles
+.dashboard {
+  &__container {
+    margin-bottom: $spacing-6;
+  }
+
+  &__grid {
+    @include grid(3, $spacing-6); // Usa el mixin directamente
+    margin-bottom: $spacing-6;
+
+    &--resources {
+      @include grid(4, $spacing-6); // Usa el mixin directamente
+    }
+
+    &--half {
+      @include grid(2, $spacing-6); // Usa el mixin directamente
+    }
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+
+      &--resources {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+
+      &--resources {
+        grid-template-columns: 1fr;
+      }
+
+      &--half {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

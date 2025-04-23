@@ -1,0 +1,66 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.team-section {
+  @include card;
+
+  &__header {
+    @include flex(row, space-between, center);
+    margin-bottom: $spacing-4;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 500;
+  }
+
+  &__icon {
+    color: $color-primary;
+  }
+
+  &__info {
+    margin-bottom: $spacing-4;
+
+    &-item {
+      font-size: $font-size-sm;
+      color: $color-gray-600;
+      margin-bottom: $spacing-2;
+    }
+  }
+
+  &__add-btn {
+    font-size: $font-size-sm;
+    color: $color-primary;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  &__table {
+    margin-top: $spacing-6;
+
+    &-header {
+      @include flex(row, space-between);
+      font-size: $font-size-sm;
+      color: $color-gray-500;
+      font-weight: 500;
+      margin-bottom: $spacing-2;
+    }
+
+    &-row {
+      @include flex(row, space-between);
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-2;
+
+      &-email {
+        flex: 1;
+      }
+
+      &-role {
+        color: $color-gray-500;
+      }
+    }
+  }
+}
