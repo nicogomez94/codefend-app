@@ -1,0 +1,23 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use '../components/dashboard/styles/dashboard';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: $color-gray-800;
+  background-color: $color-gray-100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $spacing-2;
+  font-weight: 500;
+  line-height: 1.2;
+}
