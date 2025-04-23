@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   DashboardLayout,
   StatCard,
@@ -10,28 +10,75 @@ import {
   TopBar
 } from '../components/dashboard';
 import OnboardStep1 from '../components/onboard/OnboardStep1';
+import OnboardStep2 from '../components/onboard/OnboardStep2';
+import OnboardStep3 from '../components/onboard/OnboardStep3';
 
 const DashboardPage: React.FC = () => {
-  const [showOnboard, setShowOnboard] = useState(true);
+  const [onboardStep, setOnboardStep] = useState(1);
+  const [domainToScan, setDomainToScan] = useState('www.mercadolibre.com');
+  const [scanProgress, setScanProgress] = useState(0);
 
-  const handleNextOnboard = () => {
-    setShowOnboard(false);
-    console.log("Ir al siguiente paso del onboarding");
-  };
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval> | null = null;
+    if (onboardStep === 3) {
+      setScanProgress(0);
+      interval = setInterval(() => {
+        setScanProgress(prev => {
+          if (prev >= 100) {
+            if (interval) clearInterval(interval);
+            return 100;
+          }
+          return prev + 10;
+        });
+      }, 500);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [onboardStep]);
 
   const handleGoToDashboard = () => {
-    setShowOnboard(false);
+    setOnboardStep(0);
     console.log("Ir directamente al dashboard");
+  };
+
+  const renderOnboardingStep = () => {
+    switch (onboardStep) {
+      case 1:
+        return (
+          <OnboardStep1
+            onNext={() => setOnboardStep(2)}
+            onGoToDashboard={handleGoToDashboard}
+          />
+        );
+      case 2:
+        return (
+          <OnboardStep2
+            domain={domainToScan}
+            onAnalyze={() => setOnboardStep(3)}
+            onBack={() => setOnboardStep(1)}
+          />
+        );
+      case 3:
+        return (
+          <OnboardStep3
+            domain={domainToScan}
+            progress={scanProgress}
+            totalFindings={26}
+            analyzingFindings="12/26"
+            phase="1/2 detección activa"
+            estimatedTime="5:32"
+            onGoToDashboard={handleGoToDashboard}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
     <DashboardLayout>
-      {showOnboard && (
-        <OnboardStep1
-          onNext={handleNextOnboard}
-          onGoToDashboard={handleGoToDashboard}
-        />
-      )}
+      {renderOnboardingStep()}
 
       <TopBar />
 
