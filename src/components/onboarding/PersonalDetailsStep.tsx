@@ -1,10 +1,8 @@
 import React from 'react';
 import { InputField, PhoneInputField } from '../common';
-// importa la interfaz directamente desde el store
-import useOnboardingStore, { OnboardingFormData } from '../../store/onboardingStore';
+// Solo importa el tipo OnboardingFormData, no el hook
+import { OnboardingFormData } from '../../store/onboardingStore';
 import './styles/_onboarding-steps.scss';
-
-// ya no necesitas definir el alias aqui, lo importaste
 
 interface PersonalDetailsStepProps {
   formData: OnboardingFormData; // usa la interfaz importada

@@ -15,7 +15,7 @@ import OnboardStep3 from '../components/onboard/OnboardStep3';
 
 const DashboardPage: React.FC = () => {
   const [onboardStep, setOnboardStep] = useState(1);
-  const [domainToScan, setDomainToScan] = useState('www.mercadolibre.com');
+  const [domainToScan] = useState('www.mercadolibre.com');
   const [scanProgress, setScanProgress] = useState(0);
 
   useEffect(() => {

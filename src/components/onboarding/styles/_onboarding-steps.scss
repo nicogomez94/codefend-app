@@ -79,3 +79,22 @@
      }
   }
 }
+
+.onboarding-input {
+  // ... tus estilos existentes para onboarding-input ...
+
+  &.input-error { // Estilos cuando el input tiene error
+    border-color: $color-danger-border;
+    &:focus {
+      border-color: $color-danger;
+      box-shadow: 0 0 0 1px $color-danger;
+    }
+  }
+}
+
+.onboarding-step__error {
+  color: $color-danger;
+  font-size: $font-size-xs;
+  margin-top: $spacing-1;
+  text-align: left;
+}

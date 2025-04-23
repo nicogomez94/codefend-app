@@ -19,55 +19,49 @@ const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updat
     const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);
     const isLongEnough = value.length >= 12;
 
-    if (!isLongEnough) {
-      return "La contraseña debe tener al menos 12 caracteres";
-    }
-
-    if (!(hasNumber && hasLetter && hasSymbol)) {
-      return "La contraseña debe contener al menos un número, una letra y un símbolo";
-    }
-
+    if (!isLongEnough) return "La contraseña debe tener al menos 12 caracteres";
+    if (!(hasNumber && hasLetter && hasSymbol)) return "La contraseña debe contener al menos un número, una letra y un símbolo";
     return "";
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
-    const error = validatePassword(value);
-    setPasswordError(error);
+    const validationError = validatePassword(value);
+    let currentError = validationError;
 
-    if (!error) {
+    if (!validationError) {
       updateFormData('password', value);
       if (confirmPassword && value !== confirmPassword) {
-        setPasswordError("Las contraseñas no coinciden");
-      } else if (confirmPassword && value === confirmPassword) {
-         setPasswordError(""); // Clear error if they now match
+        currentError = "Las contraseñas no coinciden";
       }
     } else {
-       updateFormData('password', ''); // Clear password in store if invalid
+      updateFormData('password', '');
     }
+    setPasswordError(currentError);
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setConfirmPassword(value);
+    const validationError = validatePassword(password); // Revalida la original
 
-    if (password && password !== value) {
+    if (validationError) {
+        setPasswordError(validationError); // Muestra error de validacion si la original es invalida
+    } else if (password && password !== value) {
       setPasswordError("Las contraseñas no coinciden");
     } else {
-      setPasswordError(validatePassword(password));
+      setPasswordError(""); // Borra error si coinciden y la original es valida
     }
   };
 
   return (
     <div className="onboarding-step">
       <h2 className="onboarding-step__subtitle">Crear un password:</h2>
-
       <p className="onboarding-step__description">
         ¡Listo! Alcanzamos la etapa final, solo queda definir tu password para obtener acceso al sistema y nuestra prueba sin cargos.
         El password debe tener 1 número, 1 letra, 12 caracteres, y un símbolo.
       </p>
-
       <div className="onboarding-step__form">
         <InputField
           id="password"
@@ -78,9 +72,9 @@ const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updat
           onChange={handlePasswordChange}
           className="onboarding-input"
           labelClassName="onboarding-label"
-          // Consider adding error display logic based on passwordError for this field too
+          // Pasa el error especifico de este campo si quieres diferenciar
+          // error={passwordError && !confirmPassword ? passwordError : ''} // Ejemplo: solo muestra error de validacion aqui
         />
-
         <InputField
           id="confirmPassword"
           type="password"
@@ -88,12 +82,11 @@ const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updat
           placeholder="Confirme su contraseña"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
-          error={passwordError} // Pass the error message to the InputField
+          error={passwordError} // Pasa el error (validacion o no coincidencia)
           className="onboarding-input"
           labelClassName="onboarding-label"
         />
-        {/* Ensure InputField component can display the error message */}
-         {passwordError && <p className="onboarding-step__error">{passwordError}</p>}
+        {/* Ya no necesitas el <p> aqui, InputField lo maneja */}
       </div>
     </div>
   );
