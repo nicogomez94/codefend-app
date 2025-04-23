@@ -2,33 +2,66 @@
 @use '../../../styles/mixins' as *;
 
 .onboarding-step {
-  text-align: center; // centrar texto descriptivo y subtitulo
+  text-align: center;
 
   &__description {
     font-size: $font-size-sm;
     color: $color-gray-600;
     line-height: 1.6;
-    margin-bottom: $spacing-6; // mas espacio despues de la descripcion
-    text-align: left; // alinear descripcion a la izquierda
+    margin-bottom: $spacing-4;
+    text-align: center; // centrar texto por defecto
+
+    &--secondary { // estilo para el segundo parrafo
+      color: $color-gray-500;
+      margin-bottom: $spacing-6;
+    }
   }
 
   &__subtitle {
-    font-size: $font-size-base; // tamaño normal
+    font-size: $font-size-lg; // un poco mas grande que el de business details
     font-weight: 600;
     color: $color-gray-800;
     margin-bottom: $spacing-4;
-    text-align: left; // alinear subtitulo a la izquierda
+    text-align: center;
   }
 
   &__form {
     display: flex;
     flex-direction: column;
-    gap: $spacing-4; // espacio entre campos del form
-    text-align: left; // asegurar que labels y inputs se alineen a la izquierda
+    gap: $spacing-4;
+    text-align: left;
+    max-width: 350px; // limitar ancho del input
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  // estilos especificos para el phone input si usas el placeholder
-  // si usas una libreria, necesitaras estilizar sus clases especificas
+  &__error {
+    color: $color-danger;
+    font-size: $font-size-xs;
+    margin-top: $spacing-1;
+    text-align: left; // alinear a la izquierda
+  }
+
+  &__icon-wrapper {
+    margin-bottom: $spacing-6;
+  }
+
+  &__icon-bg {
+    width: 6rem; // 96px
+    height: 6rem;
+    border-radius: 50%;
+    background-color: rgba($color-primary, 0.1); // fondo rojo claro
+    margin-left: auto;
+    margin-right: auto;
+    @include flex(row, center, center);
+  }
+
+  &__icon {
+    width: 3rem; // 48px
+    height: 3rem;
+    color: $color-primary; // icono rojo
+  }
+
   .phone-input-container { // asumiendo un div contenedor para el phone input
      display: flex;
      gap: $spacing-2;

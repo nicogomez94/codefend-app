@@ -1,65 +1,61 @@
 import React from 'react';
-import { Input } from '../common';
-import type { OnboardingFormData } from '../../store/onboardingStore'; // Importa el tipo
+import { InputField } from '../common';
+import { OnboardingFormData } from '../../store/onboardingStore';
+import './styles/_onboarding-steps.scss';
 
 interface BusinessDetailsStepProps {
-    // Usa el tipo importado aquí
-    formData: Partial<Pick<OnboardingFormData, 'companyName' | 'companyWebsite' | 'companySize' | 'languagePreference'>>;
-    // Actualiza el tipo del primer argumento 'field'
-    updateFormData: (field: keyof OnboardingFormData, value: string) => void;
+  formData: OnboardingFormData;
+  updateFormData: (field: keyof OnboardingFormData, value: string) => void;
 }
 
 const BusinessDetailsStep: React.FC<BusinessDetailsStepProps> = ({ formData, updateFormData }) => {
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => { // Añadir Select si usas uno
-    updateFormData(e.target.name as keyof OnboardingFormData, e.target.value);
-  };
-
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <p className="text-sm text-gray-600 mb-4">
-        Vamos a intentar de hackearte lo antes posible. Conducimos toda clase de pruebas...
+    <div className="onboarding-step">
+      <p className="onboarding-step__description">
+        Vamos a intentar de hackearte lo antes posible. Conducimos toda clase de pruebas sobre la superficie de tu empresa, desde pentest convencional, hasta detección de dataleaks, técnicas sociales avanzadas y más...
       </p>
-      <h3 className="text-md font-semibold text-gray-700 mb-3">Business details:</h3>
-      <Input
-        id="companyName"
-        name="companyName"
-        label="Nombre de la empresa"
-        placeholder="Enter company name"
-        value={formData.companyName || ''}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        id="companyWebsite"
-        name="companyWebsite"
-        type="url"
-        label="Web de la empresa"
-        placeholder="https://example.com"
-        value={formData.companyWebsite || ''}
-        onChange={handleChange}
-        required
-      />
-      {/* Considerar usar un <select> para tamaño y preferencia */}
-      <Input
-        id="companySize"
-        name="companySize"
-        label="Tamaño de la empresa"
-        placeholder="e.g., 1-10, 11-50"
-        value={formData.companySize || ''}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        id="languagePreference"
-        name="languagePreference"
-        label="Preferencia de idioma"
-        placeholder="e.g., Español, English"
-        value={formData.languagePreference || ''}
-        onChange={handleChange}
-        required
-      />
-    </form>
+      <h2 className="onboarding-step__subtitle">Business details:</h2>
+
+      <div className="onboarding-step__form">
+        <InputField
+          label="Nombre de la empresa"
+          id="companyName"
+          value={formData.companyName ?? ''}
+          onChange={(e) => updateFormData('companyName', e.target.value)}
+          placeholder="Enter company name"
+          className="onboarding-input"
+          labelClassName="onboarding-label"
+        />
+        <InputField
+          label="Web de la empresa"
+          id="companyWebsite"
+          type="url"
+          value={formData.companyWebsite ?? ''}
+          onChange={(e) => updateFormData('companyWebsite', e.target.value)}
+          placeholder="https://example.com"
+          className="onboarding-input"
+          labelClassName="onboarding-label"
+        />
+        <InputField
+          label="Tamaño de la empresa"
+          id="companySize"
+          value={formData.companySize ?? ''}
+          onChange={(e) => updateFormData('companySize', e.target.value)}
+          placeholder="e.g., 1-10, 11-50"
+          className="onboarding-input"
+          labelClassName="onboarding-label"
+        />
+        <InputField
+          label="Preferencia de idioma"
+          id="languagePreference"
+          value={formData.languagePreference ?? ''}
+          onChange={(e) => updateFormData('languagePreference', e.target.value)}
+          placeholder="e.g., Español, English"
+          className="onboarding-input"
+          labelClassName="onboarding-label"
+        />
+      </div>
+    </div>
   );
 };
 

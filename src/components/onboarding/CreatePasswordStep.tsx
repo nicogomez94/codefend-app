@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Input } from '../common';
+import { InputField } from '../common';
 import type { OnboardingFormData } from '../../store/onboardingStore';
+import './styles/_onboarding-steps.scss';
 
 interface CreatePasswordStepProps {
   formData: Partial<OnboardingFormData>;
@@ -8,24 +9,22 @@ interface CreatePasswordStepProps {
 }
 
 const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updateFormData }) => {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState(formData.password ?? '');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const validatePassword = (value: string) => {
-    // Requisitos de contraseña
+  const validatePassword = (value: string): string => {
     const hasNumber = /\d/.test(value);
-    const hasUpperCase = /[A-Z]/.test(value);
-    const hasLowerCase = /[a-z]/.test(value);
+    const hasLetter = /[a-zA-Z]/.test(value);
     const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-    const isLongEnough = value.length >= 8;
+    const isLongEnough = value.length >= 12;
 
     if (!isLongEnough) {
-      return "La contraseña debe tener al menos 8 caracteres";
+      return "La contraseña debe tener al menos 12 caracteres";
     }
-    
-    if (!(hasNumber && hasUpperCase && hasLowerCase && hasSymbol)) {
-      return "La contraseña debe contener al menos un número, una letra mayúscula, una minúscula y un símbolo";
+
+    if (!(hasNumber && hasLetter && hasSymbol)) {
+      return "La contraseña debe contener al menos un número, una letra y un símbolo";
     }
 
     return "";
@@ -36,17 +35,24 @@ const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updat
     setPassword(value);
     const error = validatePassword(value);
     setPasswordError(error);
-    
+
     if (!error) {
       updateFormData('password', value);
+      if (confirmPassword && value !== confirmPassword) {
+        setPasswordError("Las contraseñas no coinciden");
+      } else if (confirmPassword && value === confirmPassword) {
+         setPasswordError(""); // Clear error if they now match
+      }
+    } else {
+       updateFormData('password', ''); // Clear password in store if invalid
     }
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setConfirmPassword(value);
-    
-    if (password !== value) {
+
+    if (password && password !== value) {
       setPasswordError("Las contraseñas no coinciden");
     } else {
       setPasswordError(validatePassword(password));
@@ -54,36 +60,41 @@ const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updat
   };
 
   return (
-    <div>
-      <h3 className="text-lg font-semibold mb-3">Crear un password:</h3>
-      
-      <p className="text-sm text-gray-600 mb-6">
-        ¡Listo! Alcanzamos la etapa final, solo queda definir tu password para obtener acceso al sistema y nuestra prueba sin cargos. 
+    <div className="onboarding-step">
+      <h2 className="onboarding-step__subtitle">Crear un password:</h2>
+
+      <p className="onboarding-step__description">
+        ¡Listo! Alcanzamos la etapa final, solo queda definir tu password para obtener acceso al sistema y nuestra prueba sin cargos.
         El password debe tener 1 número, 1 letra, 12 caracteres, y un símbolo.
       </p>
-      
-      <Input
-        id="password"
-        name="password"
-        type="password"
-        label="Password"
-        placeholder="Ingrese su contraseña"
-        value={password}
-        onChange={handlePasswordChange}
-        required
-      />
-      
-      <Input
-        id="confirmPassword"
-        name="confirmPassword"
-        type="password"
-        label="Confirmar password"
-        placeholder="Confirme su contraseña"
-        value={confirmPassword}
-        onChange={handleConfirmPasswordChange}
-        error={passwordError}
-        required
-      />
+
+      <div className="onboarding-step__form">
+        <InputField
+          id="password"
+          type="password"
+          label="Password"
+          placeholder="Ingrese su contraseña"
+          value={password}
+          onChange={handlePasswordChange}
+          className="onboarding-input"
+          labelClassName="onboarding-label"
+          // Consider adding error display logic based on passwordError for this field too
+        />
+
+        <InputField
+          id="confirmPassword"
+          type="password"
+          label="Confirmar password"
+          placeholder="Confirme su contraseña"
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
+          error={passwordError} // Pass the error message to the InputField
+          className="onboarding-input"
+          labelClassName="onboarding-label"
+        />
+        {/* Ensure InputField component can display the error message */}
+         {passwordError && <p className="onboarding-step__error">{passwordError}</p>}
+      </div>
     </div>
   );
 };
