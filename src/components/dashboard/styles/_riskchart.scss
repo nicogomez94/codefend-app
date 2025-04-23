@@ -1,0 +1,46 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.risk-chart {
+  @include card;
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 500;
+    margin-bottom: $spacing-4;
+  }
+
+  &__chart {
+    width: 12rem;
+    height: 12rem;
+    position: relative;
+    margin: 0 auto $spacing-4;
+  }
+
+  &__level {
+    @include flex(row, space-between, center);
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-2;
+
+    &-name {
+      font-weight: 500;
+    }
+
+    &-stats {
+      @include flex(row, flex-end);
+      width: 7rem;
+    }
+
+    &-count {
+      width: 3rem;
+      text-align: right;
+    }
+
+    &-percent {
+      width: 3.5rem;
+      text-align: right;
+      color: $color-gray-500;
+      margin-left: $spacing-4;
+    }
+  }
+}
