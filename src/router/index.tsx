@@ -1,20 +1,15 @@
-// filepath: c:\Users\nicol\github\codefend-nico\codefend-test\src\router\index.tsx
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { OnboardingPage } from '../pages';
-// Import DashboardPage later
-// import { DashboardPage } from '../pages';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { OnboardingPage, DashboardPage } from '../pages';
 
 const AppRouter: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Default route to onboarding */}
-        <Route path="/" element={<OnboardingPage />} />
+        <Route path="/" element={<Navigate to="/onboarding" replace />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
-        {/* Add dashboard route later */}
-        {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
-        {/* Add other routes as needed */}
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

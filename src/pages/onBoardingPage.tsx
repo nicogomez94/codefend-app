@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   OnboardingLayout,
   PersonalDetailsStep,
@@ -12,12 +13,14 @@ import useOnboardingStore from '../store/onboardingStore';
 const TOTAL_STEPS = 4;
 
 const OnboardingPage: React.FC = () => {
+  const navigate = useNavigate();
   const { currentStep, formData, setFormData, nextStep, prevStep } = useOnboardingStore();
 
   const handleNext = () => {
     if (currentStep === TOTAL_STEPS) {
       console.log('Onboarding finalizado, datos:', formData);
-      // Lógica para enviar los datos y navegar al dashboard
+      // Redirigir al dashboard
+      navigate('/dashboard');
     } else {
       nextStep();
     }
