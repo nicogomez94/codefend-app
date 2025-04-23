@@ -1,6 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use '../components/dashboard/styles/dashboard';
+@use '../components/onboard/styles/_onboard';
 
 * {
   box-sizing: border-box;
