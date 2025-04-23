@@ -60,3 +60,69 @@
     }
   }
 }
+
+.scan-progress-section {
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 1.25rem;
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin-bottom: 0.5rem;
+  }
+
+  &__domain {
+    margin-bottom: 0.75rem;
+
+    span {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
+
+  &__progress-bar-container {
+    width: 100%;
+    background-color: #E5E7EB;
+    border-radius: 0.5rem;
+    height: 0.5rem;
+  }
+
+  &__progress-bar {
+    background-color: #EF4444;
+    height: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  &__stats {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+      text-align: center;
+
+      .value {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: inherit;
+        &.red {
+          color: #EF4444;
+        }
+      }
+
+      .label {
+        font-size: 0.75rem;
+        color: #6B7280;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/_riskchart.scss';
 
 interface RiskLevel {
   level: string;
@@ -16,31 +17,28 @@ const riskLevels: RiskLevel[] = [
 
 const RiskLevelChart: React.FC = () => {
   return (
-    <div className="bg-white rounded-md shadow-sm p-5">
-      <h3 className="text-lg font-medium mb-4">Issues count</h3>
+    <div className="risk-chart">
+      <h3 className="risk-chart__title">Issues count</h3>
       
-      <div className="mb-4">
-        <div className="relative w-48 h-48 mx-auto">
-          {/* Gráfico circular simplificado */}
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#f3f4f6" strokeWidth="20" />
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#fee2e2" strokeWidth="20" strokeDasharray="251.2" strokeDashoffset="125.6" transform="rotate(-90 50 50)" />
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#fecaca" strokeWidth="20" strokeDasharray="251.2" strokeDashoffset="213.52" transform="rotate(-90 50 50)" />
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#ef4444" strokeWidth="20" strokeDasharray="251.2" strokeDashoffset="238.64" transform="rotate(-90 50 50)" />
+      <div className="risk-chart__chart-container">
+        <div className="risk-chart__chart">
+          <svg viewBox="0 0 100 100" className="risk-chart__chart-svg">
+            <circle cx="50" cy="50" r="40" className="risk-chart__chart-bg" />
+            <circle cx="50" cy="50" r="40" className="risk-chart__chart-level risk-chart__chart-level--low" transform="rotate(-90 50 50)" />
+            <circle cx="50" cy="50" r="40" className="risk-chart__chart-level risk-chart__chart-level--medium" transform="rotate(-90 50 50)" />
+            <circle cx="50" cy="50" r="40" className="risk-chart__chart-level risk-chart__chart-level--high" transform="rotate(-90 50 50)" />
           </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white w-28 h-28 rounded-full"></div>
-          </div>
+          <div className="risk-chart__chart-center"></div>
         </div>
       </div>
       
-      <div className="space-y-2">
+      <div className="risk-chart__levels">
         {riskLevels.map((risk, index) => (
-          <div key={index} className="flex justify-between items-center text-sm">
-            <div className="font-medium">{risk.level}</div>
-            <div className="flex space-x-4">
-              <div className="w-12 text-right">{risk.count}</div>
-              <div className="w-12 text-right text-gray-500">{risk.percentage}</div>
+          <div key={index} className="risk-chart__level">
+            <div className="risk-chart__level-name">{risk.level}</div>
+            <div className="risk-chart__level-stats">
+              <div className="risk-chart__level-count">{risk.count}</div>
+              <div className="risk-chart__level-percent">{risk.percentage}</div>
             </div>
           </div>
         ))}

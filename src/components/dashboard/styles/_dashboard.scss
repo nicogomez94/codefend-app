@@ -12,6 +12,7 @@
 @use 'scanprogress';
 @use 'riskchart';
 @use 'team';
+@use 'issuestable'; // Añadir el nuevo archivo
 
 // Dashboard page specific styles
 .dashboard {

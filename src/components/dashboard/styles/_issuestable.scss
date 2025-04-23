@@ -1,0 +1,30 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.issues-table {
+  background-color: $color-white;
+  box-shadow: $shadow-sm;
+  border-radius: $border-radius;
+  margin-top: $spacing-6;
+
+  &__header {
+    padding: $spacing-4;
+    border-bottom: 1px solid $color-gray-200;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $color-gray-800;
+  }
+
+  &__content {
+    padding: $spacing-4;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-10 0;
+    color: $color-gray-500;
+  }
+}

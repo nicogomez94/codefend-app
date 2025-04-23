@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/_resourcecard.scss';
 
 interface ResourceCardProps {
   count: number;
@@ -7,11 +8,11 @@ interface ResourceCardProps {
 
 const ResourceCard: React.FC<ResourceCardProps> = ({ count, label }) => {
   return (
-    <div className="bg-white rounded-md shadow-sm p-5 text-center">
-      <div className="text-3xl font-bold mb-1">
+    <div className="resource-card">
+      <div className="resource-card__count">
         {count}
       </div>
-      <div className="text-xs text-gray-500 uppercase tracking-wider">
+      <div className="resource-card__label">
         {label}
       </div>
     </div>

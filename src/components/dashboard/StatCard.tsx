@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/_statcard.scss';
 
 interface StatCardProps {
   title: string;
@@ -8,21 +9,16 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ title, value, color, size = 'large' }) => {
-  const colorClasses = {
-    red: 'text-red-500',
-    blue: 'text-blue-500',
-    gray: 'text-gray-500',
-  };
+  const sizeClass = size === 'small' ? 'stat-card--small' : '';
+  const colorClass = `stat-card__value--${color}`;
 
   return (
-    <div className={`bg-white rounded-md shadow-sm p-4 ${size === 'small' ? 'text-center' : ''}`}>
-      <div className="flex flex-col">
-        <div className={`text-xs font-medium ${size === 'small' ? 'mb-2' : 'mb-1'}`}>
-          {title}
-        </div>
-        <div className={`${size === 'large' ? 'text-4xl' : 'text-2xl'} font-semibold ${colorClasses[color]}`}>
-          {value}
-        </div>
+    <div className={`stat-card ${sizeClass}`}>
+      <div className="stat-card__title">
+        {title}
+      </div>
+      <div className={`stat-card__value ${colorClass}`}>
+        {value}
       </div>
     </div>
   );
