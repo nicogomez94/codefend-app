@@ -16,8 +16,31 @@
 
 // Dashboard page specific styles
 .dashboard {
+  &__two-column-layout {
+    display: flex;
+    gap: $spacing-6;
+    
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+  
+  &__column-left {
+    flex: 3; // Aproximadamente 60% del espacio
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+  
+  &__column-right {
+    flex: 2; // Aproximadamente 40% del espacio
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+
   &__container {
-    margin-bottom: $spacing-6;
+    margin-bottom: 0; // Eliminamos el margen inferior previo
   }
 
   &__header {
@@ -31,9 +54,9 @@
 
   &__issues {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
     gap: $spacing-4;
-    margin-left: auto;
     
     @media (max-width: 1280px) {
       flex-wrap: wrap;
@@ -47,18 +70,31 @@
     
     @media (max-width: 640px) {
       flex-direction: column;
-      align-items: stretch;
     }
+  }
+  
+  &__chart-section, 
+  &__scan-section {
+    height: auto;
+  }
+
+  &__resource-cards {
+    margin-bottom: 0; // Eliminamos el margen inferior previo
   }
 
   &__grid {
-    @include grid(3, $spacing-6); // Usa el mixin directamente
-    margin-bottom: $spacing-6;
-
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-6;
+    
     &--resources {
-      @include grid(4, $spacing-6); // Usa el mixin directamente
+      grid-template-columns: repeat(2, 1fr);
+      
+      @media (max-width: 1200px) and (min-width: 1025px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-
+    
     &--half {
       @include grid(2, $spacing-6); // Usa el mixin directamente
     }

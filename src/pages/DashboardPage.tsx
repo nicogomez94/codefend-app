@@ -14,7 +14,7 @@ import OnboardStep2 from '../components/onboard/OnboardStep2';
 import OnboardStep3 from '../components/onboard/OnboardStep3';
 
 const DashboardPage: React.FC = () => {
-  const [onboardStep, setOnboardStep] = useState(1);
+  const [onboardStep, setOnboardStep] = useState(0); // Cambio a 0 para mostrar directamente el dashboard
   const [domainToScan] = useState('www.mercadolibre.com');
   const [scanProgress, setScanProgress] = useState(0);
 
@@ -80,35 +80,45 @@ const DashboardPage: React.FC = () => {
     <DashboardLayout>
       {renderOnboardingStep()}
 
-      <div className="dashboard__header">
-        <TopBar />
-        <div className="dashboard__issues">
-          <StatCard title="OPEN ISSUES" value="0" color="red" />
-          <StatCard title="FIXED ISSUES" value="0" color="blue" />
-          <StatCard title="TOTAL ISSUES" value="0" color="gray" />
+      <div className="dashboard__two-column-layout">
+        {/* Columna izquierda */}
+        <div className="dashboard__column-left">
+          <TopBar />
+          
+          <div className="dashboard__grid dashboard__grid--resources dashboard__resource-cards">
+            <ResourceCard count={1} label="WEB APPS / SITES" />
+            <ResourceCard count={0} label="MOBILE APPS" />
+            <ResourceCard count={0} label="NETWORK ASSETS" />
+          </div>
+
+          <div className="dashboard__grid dashboard__grid--resources dashboard__resource-cards">
+            <ResourceCard count={0} label="CLOUD ASSETS" />
+            <ResourceCard count={0} label="SOURCE CODE" />
+            <ResourceCard count={0} label="SOCIAL ASSETS" />
+            <AddResourcesSection />
+          </div>
+
+          <div className="dashboard__container">
+            <TeamSection />
+          </div>
         </div>
-      </div>
 
-      <div className="dashboard__grid dashboard__grid--resources">
-        <ResourceCard count={1} label="WEB APPS / SITES" />
-        <ResourceCard count={0} label="MOBILE APPS" />
-        <ResourceCard count={0} label="NETWORK ASSETS" />
-      </div>
+        {/* Columna derecha */}
+        <div className="dashboard__column-right">
+          <div className="dashboard__issues">
+            <StatCard title="OPEN ISSUES" value="0" color="red" />
+            <StatCard title="FIXED ISSUES" value="0" color="blue" />
+            <StatCard title="TOTAL ISSUES" value="0" color="gray" />
+          </div>
 
-      <div className="dashboard__grid dashboard__grid--resources">
-        <ResourceCard count={0} label="CLOUD ASSETS" />
-        <ResourceCard count={0} label="SOURCE CODE" />
-        <ResourceCard count={0} label="SOCIAL ASSETS" />
-        <AddResourcesSection />
-      </div>
-
-      <div className="dashboard__grid dashboard__grid--half">
-        <RiskLevelChart />
-        <ScanProgressSection />
-      </div>
-
-      <div className="dashboard__container">
-        <TeamSection />
+          <div className="dashboard__chart-section">
+            <RiskLevelChart />
+          </div>
+          
+          <div className="dashboard__scan-section">
+            <ScanProgressSection />
+          </div>
+        </div>
       </div>
     </DashboardLayout>
   );
