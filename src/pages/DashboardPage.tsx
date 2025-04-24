@@ -80,12 +80,13 @@ const DashboardPage: React.FC = () => {
     <DashboardLayout>
       {renderOnboardingStep()}
 
-      <TopBar />
-
-      <div className="dashboard__grid">
-        <StatCard title="OPEN ISSUES" value="0" color="red" />
-        <StatCard title="FIXED ISSUES" value="0" color="blue" />
-        <StatCard title="TOTAL ISSUES" value="0" color="gray" />
+      <div className="dashboard__header">
+        <TopBar />
+        <div className="dashboard__issues">
+          <StatCard title="OPEN ISSUES" value="0" color="red" />
+          <StatCard title="FIXED ISSUES" value="0" color="blue" />
+          <StatCard title="TOTAL ISSUES" value="0" color="gray" />
+        </div>
       </div>
 
       <div className="dashboard__grid dashboard__grid--resources">

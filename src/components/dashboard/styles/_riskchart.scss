@@ -3,44 +3,160 @@
 
 .risk-chart {
   @include card;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   &__title {
-    font-size: $font-size-lg;
+    font-size: 1.125rem;
     font-weight: 500;
-    margin-bottom: $spacing-4;
+    margin-bottom: 1rem;
+    color: $color-gray-800;
+  }
+
+  &__chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    position: relative;
   }
 
   &__chart {
-    width: 12rem;
-    height: 12rem;
     position: relative;
-    margin: 0 auto $spacing-4;
+    width: 200px;
+    height: 200px;
+
+    @media (max-width: 768px) {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  &__chart-svg {
+    transform: rotate(-90deg);
+    overflow: visible;
+  }
+
+  &__chart-bg {
+    fill: none;
+    stroke: #e5e7eb;
+    stroke-width: 10;
+  }
+
+  &__chart-level {
+    fill: none;
+    stroke-width: 10;
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    
+    &--high {
+      stroke: #ef4444; // critical - rojo
+      stroke-dashoffset: calc(251.2 * 0.95); // 100% - 5%
+    }
+    
+    &--medium {
+      stroke: #f97316; // elevated - naranja
+      stroke-dashoffset: calc(251.2 * 0.9); // 100% - (5% + 5%)
+    }
+    
+    &--low {
+      stroke: #3b82f6; // medium, low, intel combined
+      stroke-dashoffset: calc(251.2 * 0.1); // 100% - (5% + 5% + 10% + 20% + 60%)
+    }
+  }
+
+  &__chart-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130px;
+    height: 130px;
+    background-color: white;
+    border-radius: 50%;
+
+    @media (max-width: 768px) {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  &__levels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+    overflow-y: auto;
   }
 
   &__level {
-    @include flex(row, space-between, center);
-    font-size: $font-size-sm;
-    margin-bottom: $spacing-2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f3f4f6;
 
-    &-name {
-      font-weight: 500;
+    &:last-child {
+      border-bottom: none;
     }
+  }
 
-    &-stats {
-      @include flex(row, flex-end);
-      width: 7rem;
+  &__level-name {
+    font-size: 0.875rem;
+    text-transform: capitalize;
+    color: $color-gray-700;
+    
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 0.5rem;
+      border-radius: 50%;
+      background-color: #9ca3af;
     }
+    
+    &:contains('critical')::before {
+      background-color: #ef4444;
+    }
+    
+    &:contains('elevated')::before {
+      background-color: #f97316;
+    }
+    
+    &:contains('medium')::before {
+      background-color: #eab308;
+    }
+    
+    &:contains('low')::before {
+      background-color: #3b82f6;
+    }
+    
+    &:contains('intel')::before {
+      background-color: #6b7280;
+    }
+  }
 
-    &-count {
-      width: 3rem;
-      text-align: right;
-    }
+  &__level-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-    &-percent {
-      width: 3.5rem;
-      text-align: right;
-      color: $color-gray-500;
-      margin-left: $spacing-4;
-    }
+  &__level-count {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-gray-800;
+  }
+
+  &__level-percent {
+    font-size: 0.75rem;
+    color: $color-gray-500;
   }
 }
