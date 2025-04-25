@@ -3,6 +3,7 @@
 
 .add-resources {
   @include card;
+  text-align: left;
 
   &__title {
     font-size: $font-size-lg;

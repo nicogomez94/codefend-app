@@ -99,14 +99,14 @@ const DashboardPage: React.FC = () => {
               <AddResourcesSection />
             </div>
           </div>
-            <TeamSection />
+          <TeamSection />
         </div>
 
         {/* Columna derecha */}
         <div className="dashboard__column-right">
           <div className="dashboard__issues">
             <StatCard title="OPEN ISSUES" value="0" color="red" />
-            <StatCard title="FIXED ISSUES" value="0" color="blue" />
+            <StatCard title="FIXED ISSUES" value="0" color="gray" />
             <StatCard title="TOTAL ISSUES" value="0" color="gray" />
           </div>
 
