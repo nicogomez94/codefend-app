@@ -62,70 +62,92 @@
 }
 
 .scan-progress-section {
-  background-color: white;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  padding: 1.25rem;
+  @include card;
+  padding: $spacing-6;
 
   &__title {
-    font-size: 1.125rem;
+    font-size: $font-size-lg;
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    margin-bottom: $spacing-2;
   }
 
   &__description {
-    font-size: 0.875rem;
-    color: #6B7280;
-    margin-bottom: 0.5rem;
+    color: $color-gray-600;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-4;
   }
 
   &__domain {
-    margin-bottom: 0.75rem;
-
-    span {
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
+    margin-bottom: $spacing-4;
+    font-weight: 500;
   }
 
   &__progress-bar-container {
-    width: 100%;
-    background-color: #E5E7EB;
-    border-radius: 0.5rem;
-    height: 0.5rem;
+    height: 4px;
+    background-color: $color-gray-200;
+    border-radius: $border-radius;
+    margin-bottom: $spacing-4;
+    overflow: hidden;
   }
 
   &__progress-bar {
-    background-color: #EF4444;
-    height: 0.5rem;
-    border-radius: 0.5rem;
+    height: 100%;
+    background-color: $color-primary;
+    border-radius: $border-radius;
   }
 
   &__stats {
-    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
 
     &__item {
-      //import card mixin from variables
-      @include card;
       text-align: center;
-      font-weight: 700;
 
       &__value {
-        font-size: 2.25rem;
-        font-weight: bold;
-        color: $color-gray-400;
+        font-size: $font-size-lg;
+        font-weight: 600;
+        margin-bottom: $spacing-1;
+        
         &.red {
-          color: #EF4444;
+          color: $color-gray-500;
         }
       }
 
       &__label {
-        font-size: 0.75rem;
-        color: #35373b;
-        text-transform: uppercase;
+        font-size: $font-size-xs;
+        color: $color-gray-500;
       }
+    }
+  }
+  
+  // Estilos para la tabla de escaneos completados
+  &__table {
+    margin-top: $spacing-4;
+    border-top: 1px solid $color-gray-200;
+    
+    &-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: $spacing-3 0;
+      font-size: $font-size-sm;
+      color: $color-gray-500;
+      border-bottom: 1px solid $color-gray-200;
+    }
+    
+    &-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: $spacing-3 0;
+      font-size: $font-size-sm;
+      border-bottom: 1px solid $color-gray-200;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+    
+    &-cell {
+      color: $color-gray-700;
     }
   }
 }

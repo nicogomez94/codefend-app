@@ -28,8 +28,7 @@ const OnboardStep3: React.FC<OnboardStep3Props> = ({
     <div className="onboard-modal">
       <div className="onboard-card onboard-card--step3">
         <div className="onboard-card__logo">
-          {/* <CodefendLogo /> */}
-          <p>CODEFEND LOGO</p>
+          <p>CODEFEND</p>
         </div>
 
         <p className="onboard-card__text">

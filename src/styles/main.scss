@@ -47,6 +47,11 @@ h1, h2, h3, h4, h5, h6 {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.onboarding-layout__logo, .onboard-card__logo{
+  color: #ef4444;
+  font-size: 2em;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);

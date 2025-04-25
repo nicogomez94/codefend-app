@@ -23,20 +23,20 @@ const RiskLevelChart: React.FC = () => {
         <div className="risk-chart">
         <div className="risk-chart__chart-container">
           <div className="risk-chart__chart">
-              <svg width="200" height="200" viewBox="0 0 200 200">
-                <circle cx="100" cy="100" r="80" fill="none" stroke="#eaeaea" stroke-width="20" />
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="80"
-                  fill="none"
-                  stroke="rgb(234.9802955665, 21.0197044335, 21.0197044335)"
-                  stroke-width="20"
-                  stroke-dasharray="502.65"
-                  stroke-dashoffset="402.12"
-                  transform="rotate(-90 100 100)"
-                />
-              </svg>
+            <svg width="200" height="200" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="80" fill="none" stroke="#eaeaea" stroke-width="20" />
+              <circle
+                cx="100"
+                cy="100"
+                r="80"
+                fill="none"
+                stroke="rgb(234.9802955665, 21.0197044335, 21.0197044335)"
+                stroke-width="20"
+                stroke-dasharray="502.65"
+                stroke-dashoffset="402.12"
+                transform="rotate(-90 100 100)"
+              />
+            </svg>
             <div className="risk-chart__chart-center"></div>
           </div>
         </div>

@@ -14,8 +14,7 @@ const OnboardStep2: React.FC<OnboardStep2Props> = ({ domain, onAnalyze, onBack }
     <div className="onboard-modal">
       <div className="onboard-card onboard-card--step2">
         <div className="onboard-card__logo">
-          {/* <CodefendLogo /> */}
-          <p>CODEFEND LOGO</p>
+          <p>CODEFEND</p>
         </div>
 
         <p className="onboard-card__text">
