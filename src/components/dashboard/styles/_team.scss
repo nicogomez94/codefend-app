@@ -3,63 +3,80 @@
 
 .team-section {
   @include card;
+  padding: $spacing-6;
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Dos columnas iguales
+  gap: $spacing-6;
 
-  &__header {
-    @include flex(row, space-between, center);
-    margin-bottom: $spacing-4;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Apilar en pantallas pequeñas
+  }
+
+  &__info-container,
+  &__table-container {
+    @include card;
+    padding: $spacing-6;
+  }
+
+  &__info {
+    &-list {
+      margin-bottom: $spacing-4;
+
+      &-item {
+        font-size: $font-size-sm;
+        color: $color-gray-600;
+        margin-bottom: $spacing-2;
+      }
+    }
+
+    &-btn {
+      font-size: $font-size-sm;
+      color: $color-primary;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      text-decoration: underline;
+    }
   }
 
   &__title {
     font-size: $font-size-lg;
     font-weight: 500;
-  }
-
-  &__icon {
-    color: $color-primary;
-  }
-
-  &__info {
     margin-bottom: $spacing-4;
 
-    &-item {
-      font-size: $font-size-sm;
-      color: $color-gray-600;
-      margin-bottom: $spacing-2;
+    &__icon {
+      margin-right: $spacing-2;
+      font-size: $font-size-lg;
+      color: $color-primary;
     }
   }
 
-  &__add-btn {
-    font-size: $font-size-sm;
-    color: $color-primary;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-  }
-
   &__table {
-    margin-top: $spacing-6;
-
     &-header {
       @include flex(row, space-between);
       font-size: $font-size-sm;
       color: $color-gray-500;
       font-weight: 500;
       margin-bottom: $spacing-2;
+      border-bottom: 1px solid $color-gray-200;
+      padding-bottom: $spacing-2;
     }
 
-    &-row {
-      @include flex(row, space-between);
-      font-size: $font-size-sm;
-      margin-bottom: $spacing-2;
+    &-body {
+      &-row {
+        @include flex(row, space-between);
+        font-size: $font-size-sm;
+        margin-bottom: $spacing-2;
 
-      &-email {
-        flex: 1;
-      }
+        &-email {
+          flex: 1;
+        }
 
-      &-role {
-        color: $color-gray-500;
+        &-role {
+          color: $color-gray-500;
+        }
       }
     }
   }

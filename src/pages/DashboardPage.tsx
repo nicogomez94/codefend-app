@@ -85,22 +85,21 @@ const DashboardPage: React.FC = () => {
         <div className="dashboard__column-left">
           <TopBar />
           
-          <div className="dashboard__grid dashboard__grid--resources dashboard__resource-cards">
-            <ResourceCard count={1} label="WEB APPS / SITES" />
-            <ResourceCard count={0} label="MOBILE APPS" />
-            <ResourceCard count={0} label="NETWORK ASSETS" />
-          </div>
+          <div className='dashboard__container__resources'>
+            <div className="dashboard__grid dashboard__grid--resources dashboard__resource-cards">
+              <ResourceCard count={1} label="WEB APPS / SITES" />
+              <ResourceCard count={0} label="MOBILE APPS" />
+              <ResourceCard count={0} label="NETWORK ASSETS" />
+              <ResourceCard count={0} label="CLOUD ASSETS" />
+              <ResourceCard count={0} label="SOURCE CODE" />
+              <ResourceCard count={0} label="SOCIAL ASSETS" />
+            </div>
 
-          <div className="dashboard__grid dashboard__grid--resources dashboard__resource-cards">
-            <ResourceCard count={0} label="CLOUD ASSETS" />
-            <ResourceCard count={0} label="SOURCE CODE" />
-            <ResourceCard count={0} label="SOCIAL ASSETS" />
-            <AddResourcesSection />
+            <div className="dashboard__container">
+              <AddResourcesSection />
+            </div>
           </div>
-
-          <div className="dashboard__container">
             <TeamSection />
-          </div>
         </div>
 
         {/* Columna derecha */}

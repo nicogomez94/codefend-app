@@ -12,8 +12,8 @@ interface MenuSection {
 
 const menuSections: MenuSection[] = [
   {
+    title: 'Main',
     items: [
-      { name: 'Main', path: '/dashboard', active: false },
       { name: 'Dashboard', path: '/dashboard', active: true },
       { name: 'Team members', path: '/dashboard/team', active: false },
       { name: 'Orders and payments', path: '/dashboard/orders', active: false },
