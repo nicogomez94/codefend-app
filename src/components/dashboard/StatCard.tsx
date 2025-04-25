@@ -4,7 +4,7 @@ import './styles/_statcard.scss';
 interface StatCardProps {
   title: string;
   value: string | number;
-  color: 'red' | 'blue' | 'gray';
+  color: 'red' | 'gray';
   size?: 'small' | 'large';
 }
 
@@ -14,11 +14,11 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, color, size = 'large'
 
   return (
     <div className={`stat-card ${sizeClass}`}>
-      <div className="stat-card__title">
-        {title}
-      </div>
       <div className={`stat-card__value ${colorClass}`}>
         {value}
+      </div>
+      <div className="stat-card__title">
+        {title}
       </div>
     </div>
   );

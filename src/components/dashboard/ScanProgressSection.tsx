@@ -4,7 +4,7 @@ import './styles/_scanprogress.scss'; // Import the Sass file
 const ScanProgressSection: React.FC = () => {
   return (
     <div className="scan-progress-section">
-      <h3 className="scan-progress-section__title">Scannéo en curso</h3>
+      <h3 className="scan-progress-section__title">Escaneo en Curso</h3>
       <p className="scan-progress-section__description">
         Los scanners automáticos están analizando uno de sus recursos web:
       </p>

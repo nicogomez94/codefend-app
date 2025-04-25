@@ -2,11 +2,11 @@
 @use '../../../styles/mixins' as *;
 
 .team-section {
-  @include card;
-  padding: $spacing-6;
+  // @include card;
   display: grid;
   grid-template-columns: 1fr 1fr; // Dos columnas iguales
   gap: $spacing-6;
+  text-align: left;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr; // Apilar en pantallas pequeñas
@@ -18,9 +18,14 @@
     padding: $spacing-6;
   }
 
+  &__add-btn {
+      @include button($color-primary);
+  }
+
   &__info {
     &-list {
       margin-bottom: $spacing-4;
+      list-style: none;
 
       &-item {
         font-size: $font-size-sm;
