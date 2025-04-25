@@ -1,0 +1,51 @@
+@use '../../../styles/variables' as *; // Ajusta la ruta según corresponda
+@use '../../../styles/mixins' as *; // Ajusta la ruta según corresponda
+
+.button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  margin-top: 20px;
+  margin-left: 10px;
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  &--primary {
+    background-color: #f56565; // rojo equivalente a red-500
+    color: white;
+    
+    &:hover {
+      background-color: #e53e3e; // rojo más oscuro equivalente a red-600
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 0 4px rgba(245, 101, 101, 0.5);
+    }
+  }
+  
+  &--secondary {
+    background-color: #edf2f7; // gris claro equivalente a gray-200
+    color: #4a5568; // gray-700
+    
+    &:hover {
+      background-color: #e2e8f0; // gray-300
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0 0 0 4px rgba(160, 174, 192, 0.5);
+    }
+  }
+  
+  &--disabled {
+    background-color: #e2e8f0; // gray-300
+    color: #a0aec0; // gray-500
+    cursor: not-allowed;
+  }
+}

@@ -8,6 +8,8 @@ const AddResourcesSection: React.FC = () => {
       <p className="add-resources__description">
         Añada recursos para que podamos dimensionar su superficie de ataque y diseñar un plan a medida de sus necesidades.
       </p>
+      <hr />
+      <br />
       <button className="add-resources__button">
         Ir hacia recursos
       </button>

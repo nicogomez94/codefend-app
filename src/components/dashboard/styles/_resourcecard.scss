@@ -4,17 +4,20 @@
 .resource-card {
   @include card;
   text-align: center;
+  background-color: #ffffff72;
 
   &__count {
     font-size: $font-size-3xl;
     font-weight: 700;
     margin-bottom: $spacing-1;
+    color: $color-gray-400;
   }
 
   &__label {
     font-size: $font-size-xs;
     text-transform: uppercase;
-    color: $color-gray-500;
+    color: $color-gray-700;
+    font-weight: 700;
     letter-spacing: 0.05em;
   }
 }

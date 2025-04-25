@@ -26,7 +26,8 @@ const TeamSection: React.FC = () => {
           <li className="team-section__info-item">- Resuelva las vulnerabilidades más fácil.</li>
           <li className="team-section__info-item">- No hay un máximo de colaboradores.</li>
         </ul>
-        <button className="team-section__add-btn">- Añadir un colaborador.</button>
+        <br />
+        <button className="team-section__add-btn">Añadir un colaborador</button>
       </div>
 
       {/* Contenedor de tabla */}
@@ -37,7 +38,7 @@ const TeamSection: React.FC = () => {
         </div>
         <div className="team-section__table-body">
           {teamMembers.map((member, index) => (
-            <div key={index} className="team-section__table-row">
+            <div key={index} className="team-section__table-body-row">
               <div className="team-section__table-row-email">{member.email}</div>
               <div className="team-section__table-row-role">{member.role}</div>
             </div>

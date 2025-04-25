@@ -3,7 +3,7 @@
 
 .topbar {
   @include card;
-  margin-bottom: $spacing-6;
+  margin-bottom: $spacing-2;
 
   &__content {
     @include flex(row, space-between, flex-start);
