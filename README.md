@@ -1,55 +1,75 @@
-# React + TypeScript + Vite
+# Codefend - Desafío Técnico Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene la solución al desafío técnico para el rol de **Desarrollador/a Frontend – React / JS**. El objetivo principal es construir un flujo funcional de creación de usuario y una pantalla de dashboard, alineados al diseño entregado y los requerimientos técnicos.
 
-Currently, two official plugins are available:
+## 🛠 Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Framework principal para la construcción de la interfaz.
+- **TypeScript**: Para tipado estático y mayor robustez en el desarrollo.
+- **Zustand**: Manejo de estado global.
+- **React Router**: Navegación entre las pantallas.
+- **Sass**: Estilización modular y reutilizable.
+- **Vite**: Herramienta de desarrollo para un entorno rápido y moderno.
 
-## Expanding the ESLint configuration
+## 🚀 Funcionalidades Implementadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Flujo de Onboarding**:
+   - Creación de un nuevo usuario con validaciones en cada paso.
+   - Persistencia del estado del formulario utilizando `Zustand`.
+   - Navegación entre pasos con un indicador de progreso.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. **Pantalla de Dashboard**:
+   - Vista populada con datos simulados.
+   - Vista sin popular en caso de cerrar el modal de onboarding.
+   - Componentes reutilizables para tarjetas de estadísticas, gráficos y tablas.
+
+3. **Manejo de Estados y Errores**:
+   - Validaciones en tiempo real en los formularios.
+   - Mensajes de error claros y específicos para cada campo.
+   - Navegación fluida y manejo de estados globales.
+
+## 📦 Estructura del Proyecto
+
+```plaintext
+codefend-test/
+├── src/
+│   ├── components/       # Componentes reutilizables y específicos
+│   ├── pages/            # Páginas principales (Onboarding, Dashboard)
+│   ├── store/            # Manejo de estado global con Zustand
+│   ├── styles/           # Estilos globales y específicos (Sass)
+│   ├── router/           # Configuración de rutas
+│   └── [main.tsx](http://_vscodecontentref_/0)          # Punto de entrada principal
+├── public/               # Archivos estáticos
+├── [package.json](http://_vscodecontentref_/1)          # Dependencias y scripts
+├── [tsconfig.json](http://_vscodecontentref_/2)         # Configuración de TypeScript
+└── [vite.config.ts](http://_vscodecontentref_/3)        # Configuración de Vite
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📖 Instrucciones para Ejecutar el Proyecto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Clonar el repositorio**:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
-# codefend-app
+    ```bash
+    git clone https://github.com/nicogomez94/codefend-test
+    cd codefend-test
+    ```
+
+2. **Instalar dependencias**:
+
+    Asegúrate de tener **Node.js** y **npm** o **yarn** instalados en tu sistema.
+
+    ```bash
+    npm install
+    # o
+    yarn install
+    ```
+
+3. **Ejecutar el proyecto**:
+
+    Inicia el servidor de desarrollo:
+
+    ```bash
+    npm run dev
+    # o
+    yarn dev
+    ```
