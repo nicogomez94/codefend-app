@@ -22,6 +22,7 @@ Este repositorio contiene la solución al desafío técnico para el rol de **Des
    - Vista populada con datos simulados.
    - Vista sin popular en caso de cerrar el modal de onboarding.
    - Componentes reutilizables para tarjetas de estadísticas, gráficos y tablas.
+   - Funcionalidad de Ver Perfil con Modal para ver datos y cerrar sesión.
 
 3. **Manejo de Estados y Errores**:
    - Validaciones en tiempo real en los formularios.
