@@ -57,7 +57,7 @@
     transform-origin: center;
     
     &--high {
-      stroke: #ef4444; // critical - rojo
+      stroke: $color-red-500; // critical - rojo
       stroke-dashoffset: calc(251.2 * 0.95); // 100% - 5%
     }
     
@@ -124,7 +124,7 @@
     }
     
     &:contains('critical')::before {
-      background-color: #ef4444;
+      background-color: $color-red-500;
     }
     
     &:contains('elevated')::before {

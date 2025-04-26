@@ -26,10 +26,10 @@
     &-list {
       margin-bottom: $spacing-4;
       list-style: none;
+      color: $color-gray-500;
+      font-size: $font-size-xs;
 
       &-item {
-        font-size: $font-size-sm;
-        color: $color-gray-600;
         margin-bottom: $spacing-2;
       }
     }

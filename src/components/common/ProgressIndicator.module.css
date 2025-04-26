@@ -15,11 +15,11 @@
 
 .step.active {
   background-color: white;
-  border: 2px solid #ef4444;
+  border: 2px solid $color-red-500;
 }
 
 .step.completed {
-  background-color: #ef4444;
+  background-color: $color-red-500;
 }
 
 .line {
@@ -29,5 +29,5 @@
 }
 
 .line.completed {
-  background-color: #ef4444;
+  background-color: $color-red-500;
 }

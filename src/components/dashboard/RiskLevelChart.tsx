@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles/_riskchart.scss';
-import { SassColor } from 'sass';
 
 interface RiskLevel {
   level: string;

@@ -123,7 +123,7 @@ const DashboardPage: React.FC = () => {
       <div className="dashboard__two-column-layout">
         {/* Columna izquierda */}
         <div className="dashboard__column-left">
-          <TopBar />
+          <TopBar isAnalysisComplete={analysisComplete} />
           
           <div className='dashboard__container__resources'>
             <div className="dashboard__grid dashboard__grid--resources dashboard__resource-cards">
