@@ -6,9 +6,10 @@ import './styles/_onboarding-steps.scss';
 interface ConfirmEmailStepProps {
   formData: OnboardingFormData;
   updateFormData: (field: keyof OnboardingFormData, value: string) => void;
+  errors: { [key in keyof OnboardingFormData]?: string }; // Añade la prop errors
 }
 
-const ConfirmEmailStep: React.FC<ConfirmEmailStepProps> = ({ formData, updateFormData }) => {
+const ConfirmEmailStep: React.FC<ConfirmEmailStepProps> = ({ formData, updateFormData, errors }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateFormData('verificationCode', e.target.value);
@@ -45,6 +46,7 @@ const ConfirmEmailStep: React.FC<ConfirmEmailStepProps> = ({ formData, updateFor
           placeholder="Enter verification code"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.verificationCode} // Muestra el error desde la prop errors
         />
       </div>
     </div>

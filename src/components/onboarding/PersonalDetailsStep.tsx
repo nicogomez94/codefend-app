@@ -13,44 +13,44 @@ const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = ({ formData, upd
   return (
     <div className="onboarding-step">
       <p className="onboarding-step__description">
-        Bienvenido. Codefend es una plataforma completa para pentest continuo, detección temprana de amenazas, y protección de assets e infraestructura, empleando una red de hackers decentralizada especializados en diversas áreas.
+        Bienvenido. Codefend es una plataforma completa para pentest continuo, detección temprana de amenazas y protección de activos e infraestructura, empleando una red descentralizada de hackers especializados en diversas áreas.
       </p>
-      <h2 className="onboarding-step__subtitle">Personal details:</h2>
+      <h2 className="onboarding-step__subtitle">Detalles personales:</h2>
 
       <div className="onboarding-step__form">
         <InputField
-          label="First name"
+          label="Nombre"
           id="firstName"
           value={formData.firstName ?? ''}
           onChange={(e) => updateFormData('firstName', e.target.value)}
-          placeholder="Enter your first name"
+          placeholder="Ingrese su nombre"
           className="onboarding-input"
           labelClassName="onboarding-label"
           error={errors?.firstName}
         />
         <InputField
-          label="Last name"
+          label="Apellido"
           id="lastName"
           value={formData.lastName ?? ''}
           onChange={(e) => updateFormData('lastName', e.target.value)}
-          placeholder="Enter your last name"
+          placeholder="Ingrese su apellido"
           className="onboarding-input"
           labelClassName="onboarding-label"
           error={errors?.lastName}
         />
         <InputField
-          label="Professional email"
+          label="Correo electrónico profesional"
           id="email"
           type="email"
           value={formData.email ?? ''}
           onChange={(e) => updateFormData('email', e.target.value)}
-          placeholder="Enter your professional email"
+          placeholder="Ingrese su correo electrónico profesional"
           className="onboarding-input"
           labelClassName="onboarding-label"
           error={errors?.email}
         />
         <PhoneInputField
-          label="Phone number"
+          label="Número de teléfono"
           id="phone"
           value={formData.phone ?? ''}
           onChange={(value: string) => updateFormData('phone', value)}

@@ -6,9 +6,10 @@ import './styles/_onboarding-steps.scss';
 interface BusinessDetailsStepProps {
   formData: OnboardingFormData;
   updateFormData: (field: keyof OnboardingFormData, value: string) => void;
+  errors: { [key in keyof OnboardingFormData]?: string };
 }
 
-const BusinessDetailsStep: React.FC<BusinessDetailsStepProps> = ({ formData, updateFormData }) => {
+const BusinessDetailsStep: React.FC<BusinessDetailsStepProps> = ({ formData, updateFormData, errors }) => {
   return (
     <div className="onboarding-step">
       <p className="onboarding-step__description">
@@ -25,6 +26,7 @@ const BusinessDetailsStep: React.FC<BusinessDetailsStepProps> = ({ formData, upd
           placeholder="Enter company name"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.companyName}
         />
         <InputField
           label="Web de la empresa"
@@ -35,6 +37,7 @@ const BusinessDetailsStep: React.FC<BusinessDetailsStepProps> = ({ formData, upd
           placeholder="https://example.com"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.companyWebsite}
         />
         <InputField
           label="Tamaño de la empresa"
@@ -44,6 +47,7 @@ const BusinessDetailsStep: React.FC<BusinessDetailsStepProps> = ({ formData, upd
           placeholder="e.g., 1-10, 11-50"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.companySize}
         />
         <InputField
           label="Preferencia de idioma"
@@ -53,6 +57,7 @@ const BusinessDetailsStep: React.FC<BusinessDetailsStepProps> = ({ formData, upd
           placeholder="e.g., Español, English"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.languagePreference}
         />
       </div>
     </div>

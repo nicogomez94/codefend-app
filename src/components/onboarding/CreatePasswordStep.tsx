@@ -6,53 +6,22 @@ import './styles/_onboarding-steps.scss';
 interface CreatePasswordStepProps {
   formData: Partial<OnboardingFormData>;
   updateFormData: (field: keyof OnboardingFormData, value: string) => void;
+  errors: { [key in keyof OnboardingFormData]?: string }; // Añade la prop errors
 }
 
-const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updateFormData }) => {
+const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updateFormData, errors }) => {
   const [password, setPassword] = useState(formData.password ?? '');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-
-  const validatePassword = (value: string): string => {
-    const hasNumber = /\d/.test(value);
-    const hasLetter = /[a-zA-Z]/.test(value);
-    const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);
-    const isLongEnough = value.length >= 12;
-
-    if (!isLongEnough) return "La contraseña debe tener al menos 12 caracteres";
-    if (!(hasNumber && hasLetter && hasSymbol)) return "La contraseña debe contener al menos un número, una letra y un símbolo";
-    return "";
-  };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
-    const validationError = validatePassword(value);
-    let currentError = validationError;
-
-    if (!validationError) {
-      updateFormData('password', value);
-      if (confirmPassword && value !== confirmPassword) {
-        currentError = "Las contraseñas no coinciden";
-      }
-    } else {
-      updateFormData('password', '');
-    }
-    setPasswordError(currentError);
+    updateFormData('password', value);
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setConfirmPassword(value);
-    const validationError = validatePassword(password); // Revalida la original
-
-    if (validationError) {
-        setPasswordError(validationError); // Muestra error de validacion si la original es invalida
-    } else if (password && password !== value) {
-      setPasswordError("Las contraseñas no coinciden");
-    } else {
-      setPasswordError(""); // Borra error si coinciden y la original es valida
-    }
   };
 
   return (
@@ -72,8 +41,7 @@ const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updat
           onChange={handlePasswordChange}
           className="onboarding-input"
           labelClassName="onboarding-label"
-          // Pasa el error especifico de este campo si quieres diferenciar
-          // error={passwordError && !confirmPassword ? passwordError : ''} // Ejemplo: solo muestra error de validacion aqui
+          error={errors?.password} // Muestra el error desde la prop errors
         />
         <InputField
           id="confirmPassword"
@@ -82,11 +50,10 @@ const CreatePasswordStep: React.FC<CreatePasswordStepProps> = ({ formData, updat
           placeholder="Confirme su contraseña"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
-          error={passwordError} // Pasa el error (validacion o no coincidencia)
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={password !== confirmPassword ? 'Las contraseñas no coinciden' : undefined} // Validación local
         />
-        {/* Ya no necesitas el <p> aqui, InputField lo maneja */}
       </div>
     </div>
   );
