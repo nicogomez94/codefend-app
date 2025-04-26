@@ -1,0 +1,20 @@
+.input-field {
+  margin-bottom: 1rem;
+
+  &__input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    &--error {
+      border-color: #ef4444;
+    }
+  }
+
+  &__error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+}

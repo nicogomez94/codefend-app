@@ -1,15 +1,15 @@
 import React from 'react';
 import { InputField, PhoneInputField } from '../common';
-// Solo importa el tipo OnboardingFormData, no el hook
 import { OnboardingFormData } from '../../store/onboardingStore';
 import './styles/_onboarding-steps.scss';
 
 interface PersonalDetailsStepProps {
-  formData: OnboardingFormData; // usa la interfaz importada
-  updateFormData: (field: keyof OnboardingFormData, value: string) => void; // keyof funciona con la interfaz importada
+  formData: OnboardingFormData;
+  updateFormData: (field: keyof OnboardingFormData, value: string) => void;
+  errors: { [key in keyof OnboardingFormData]?: string };
 }
 
-const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = ({ formData, updateFormData }) => {
+const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = ({ formData, updateFormData, errors }) => {
   return (
     <div className="onboarding-step">
       <p className="onboarding-step__description">
@@ -21,12 +21,12 @@ const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = ({ formData, upd
         <InputField
           label="First name"
           id="firstName"
-          // usa ?. para seguridad ya que los campos son opcionales en la interfaz
           value={formData.firstName ?? ''}
           onChange={(e) => updateFormData('firstName', e.target.value)}
           placeholder="Enter your first name"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.firstName}
         />
         <InputField
           label="Last name"
@@ -36,6 +36,7 @@ const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = ({ formData, upd
           placeholder="Enter your last name"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.lastName}
         />
         <InputField
           label="Professional email"
@@ -46,16 +47,17 @@ const PersonalDetailsStep: React.FC<PersonalDetailsStepProps> = ({ formData, upd
           placeholder="Enter your professional email"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.email}
         />
         <PhoneInputField
           label="Phone number"
           id="phone"
           value={formData.phone ?? ''}
-          // Asegurate que onChange de PhoneInputField devuelva string
           onChange={(value: string) => updateFormData('phone', value)}
           defaultCountryCode="+54"
           className="onboarding-input"
           labelClassName="onboarding-label"
+          error={errors?.phone}
         />
       </div>
     </div>

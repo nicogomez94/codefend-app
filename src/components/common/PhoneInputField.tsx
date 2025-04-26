@@ -1,4 +1,3 @@
-// filepath: c:\Users\nicol\github\codefend-nico\codefend-test\src\components\common\PhoneInputField.tsx
 import React from 'react';
 
 interface PhoneInputFieldProps {
@@ -9,9 +8,9 @@ interface PhoneInputFieldProps {
   defaultCountryCode?: string;
   className?: string;
   labelClassName?: string;
+  error?: string;
 }
 
-// placeholder MUY basico - considera usar una libreria como react-phone-number-input
 const PhoneInputField: React.FC<PhoneInputFieldProps> = ({
   label,
   id,
@@ -19,32 +18,36 @@ const PhoneInputField: React.FC<PhoneInputFieldProps> = ({
   onChange,
   defaultCountryCode = "+1",
   className,
-  labelClassName
+  labelClassName,
+  error
 }) => {
-  // logica muy simple, no maneja el prefijo realmente
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
 
+  const inputClassName = `${className} ${error ? 'input-error' : ''}`;
+
   return (
     <div>
       <label htmlFor={id} className={labelClassName}>{label}</label>
-      <div style={{ display: 'flex' }} className="phone-input-container"> {/* añade clase contenedora */}
+      <div style={{ display: 'flex' }} className="phone-input-container">
         <select style={{ marginRight: '5px', padding: '0.5rem' }} defaultValue={defaultCountryCode}>
           <option>+54</option>
           <option>+1</option>
-          {/* ... mas codigos ... */}
         </select>
         <input
           id={id}
           type="tel"
           value={value}
           onChange={handleInputChange}
-          className={className} // aplica clase al input
+          className={inputClassName}
           placeholder="Phone number"
           style={{ flexGrow: 1 }}
+          aria-invalid={!!error}
+          aria-describedby={error ? `${id}-error` : undefined}
         />
       </div>
+      {error && <p id={`${id}-error`} className="onboarding-step__error" style={{ marginTop: '4px', color: 'red', fontSize: '0.875rem' }}>{error}</p>}
     </div>
   );
 };
