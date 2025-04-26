@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 export interface OnboardingFormData {
   firstName?: string;
@@ -15,28 +16,41 @@ export interface OnboardingFormData {
 
 interface OnboardingState {
   currentStep: number;
-  formData: OnboardingFormData;
+  formData: Partial<OnboardingFormData>;
   setFormData: (data: Partial<OnboardingFormData>) => void;
   nextStep: () => void;
   prevStep: () => void;
   resetStore: () => void;
 }
 
-const TOTAL_STEPS = 4;
-
-const useOnboardingStore = create<OnboardingState>((set) => ({
-  currentStep: 1,
-  formData: {},
-  setFormData: (data) => set((state) => ({
-    formData: { ...state.formData, ...data }
-  })),
-  nextStep: () => set((state) => ({
-    currentStep: Math.min(state.currentStep + 1, TOTAL_STEPS)
-  })),
-  prevStep: () => set((state) => ({
-    currentStep: Math.max(state.currentStep - 1, 1)
-  })),
-  resetStore: () => set({ currentStep: 1, formData: {} }),
-}));
+const useOnboardingStore = create<OnboardingState>()(
+  persist(
+    (set) => ({
+      currentStep: 1,
+      formData: {},
+      setFormData: (data) => 
+        set((state) => ({ 
+          formData: { ...state.formData, ...data } 
+        })),
+      nextStep: () => 
+        set((state) => ({ 
+          currentStep: state.currentStep + 1 
+        })),
+      prevStep: () => 
+        set((state) => ({ 
+          currentStep: state.currentStep - 1 
+        })),
+      resetStore: () => 
+        set({ 
+          currentStep: 1, 
+          formData: {} 
+        }),
+    }),
+    {
+      name: 'onboarding-storage',
+      storage: createJSONStorage(() => sessionStorage),
+    }
+  )
+);
 
 export default useOnboardingStore;

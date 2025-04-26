@@ -29,7 +29,6 @@ const menuSections: MenuSection[] = [
       { name: 'Web software', path: '/dashboard/web', active: false },
       { name: 'Mobile software', path: '/dashboard/mobile', active: false },
       { name: 'Network Infrastructure', path: '/dashboard/network', active: false },
-      { name: 'Social attacks', path: '/dashboard/social', active: false },
     ]
   },
   {

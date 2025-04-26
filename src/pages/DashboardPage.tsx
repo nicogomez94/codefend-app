@@ -76,7 +76,6 @@ const DashboardPage: React.FC = () => {
         return (
           <OnboardStep1
             onNext={() => setOnboardStep(2)}
-            onGoToDashboard={handleGoToDashboard}
           />
         );
       case 2:

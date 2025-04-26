@@ -29,7 +29,7 @@ const TopBar: React.FC<TopBarProps> = ({ isAnalysisComplete = false }) => {
       <div className="topbar__score">
         <span>{score}</span>
         <div className="topbar__dots">
-          {[1, 2, 3, 4, 5].map((dot, index) => (
+          {[1, 2, 3, 4, 5].map((index) => (
             <span 
               key={index} 
               className={`topbar__dot ${index < score ? 'topbar__dot--filled' : ''}`}
