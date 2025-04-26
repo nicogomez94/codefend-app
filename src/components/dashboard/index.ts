@@ -7,3 +7,4 @@ export { default as AddResourcesSection } from './AddResourcesSection';
 export { default as ScanProgressSection } from './ScanProgressSection';
 export { default as RiskLevelChart } from './RiskLevelChart';
 export { default as TeamSection } from './TeamSection';
+export { default as UserProfileModal } from './UserProfileModal';

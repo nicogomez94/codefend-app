@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useOnboardingStore from '../../store/onboardingStore'; // Importa el store
+import { Button } from '../common'; // Asume que tienes un componente Button
+import UserProfileModal from './UserProfileModal'; // Importa el componente UserProfileModal
 
 interface MenuSection {
   title?: string;
@@ -49,8 +52,33 @@ const menuSections: MenuSection[] = [
 ];
 
 const Sidebar: React.FC = () => {
+  const { formData } = useOnboardingStore(); // Obtén los datos del store
+  const [isModalOpen, setIsModalOpen] = useState(false); // Estado para el modal
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Obtén el nombre del usuario, usa un valor por defecto si no está disponible
+  const userName = formData.firstName || 'Usuario';
+
   return (
     <aside className="sidebar">
+      {/* Nueva sección de perfil */}
+      <div className="sidebar__profile-section">
+        <span className="sidebar__greeting">Hola, {userName}</span>
+        <Button
+          variant="primary" // O el variant que prefieras para un botón tipo enlace
+          onClick={handleOpenModal}
+          className="sidebar__profile-button"
+        >
+          Ver perfil
+        </Button>
+      </div>
 
       <nav className="sidebar__nav">
         {menuSections.map((section, sectionIndex) => (
@@ -77,6 +105,14 @@ const Sidebar: React.FC = () => {
           </div>
         ))}
       </nav>
+
+      {/* Renderiza el modal si está abierto */}
+      {isModalOpen && (
+        <UserProfileModal
+          userData={formData}
+          onClose={handleCloseModal}
+        />
+      )}
     </aside>
   );
 };

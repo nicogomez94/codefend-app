@@ -1,0 +1,105 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); // Fondo semitransparente
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; // Asegura que esté por encima de otros elementos
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-width: 400px; // Ancho mínimo
+  max-width: 600px; // Ancho máximo
+  max-height: 80vh; // Altura máxima
+  overflow-y: auto; // Scroll si el contenido es muy largo
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .modal-close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+  }
+}
+
+.modal-body {
+  margin-bottom: 1.5rem;
+}
+
+.modal-field {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.modal-field-label {
+  font-weight: bold;
+  color: #555;
+  margin-right: 1rem;
+}
+
+.modal-field-value {
+  color: #333;
+  text-align: right;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+// Estilos para la nueva sección en Sidebar
+.sidebar__profile-section {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee; // O el color de borde que uses
+  margin-bottom: 1rem;
+  text-align: center; // O como prefieras alinear
+}
+
+.sidebar__greeting {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333; // O el color que uses
+}
+
+.sidebar__profile-button {
+  // Estilos específicos si usas variant="link" o similar
+  color: #007bff; // Color de enlace
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
