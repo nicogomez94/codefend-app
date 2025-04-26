@@ -6,10 +6,9 @@ import './styles/_onboard.scss';
 
 interface OnboardStep1Props {
   onNext: () => void;
-  onGoToDashboard: () => void;
 }
 
-const OnboardStep1: React.FC<OnboardStep1Props> = ({ onNext, onGoToDashboard }) => {
+const OnboardStep1: React.FC<OnboardStep1Props> = ({ onNext }) => {
   const [domain, setDomain] = useState('www.mercadolibre.com');
   const subdomains = [
     'mercadolibre.com',
@@ -74,9 +73,9 @@ const OnboardStep1: React.FC<OnboardStep1Props> = ({ onNext, onGoToDashboard }) 
         </div>
 
         <div className="onboard-card__actions">
-          <button className="onboard-card__btn onboard-card__btn--secondary" onClick={onGoToDashboard}>
+          {/* <button className="onboard-card__btn onboard-card__btn--secondary" onClick={onGoToDashboard}>
             Dashboard
-          </button>
+          </button> */}
           <button className="onboard-card__btn onboard-card__btn--primary" onClick={onNext}>
             Próximo
           </button>

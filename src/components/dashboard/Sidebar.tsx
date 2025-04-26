@@ -72,7 +72,6 @@ const Sidebar: React.FC = () => {
       <div className="sidebar__profile-section">
         <span className="sidebar__greeting">Hola, {userName}</span>
         <Button
-          variant="primary" // O el variant que prefieras para un botón tipo enlace
           onClick={handleOpenModal}
           className="sidebar__profile-button"
         >

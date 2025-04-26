@@ -63,6 +63,7 @@ const OnboardStep3: React.FC<OnboardStep3Props> = ({
           </svg>
         </div>
 
+        {/* Muestra las estadísticas solo cuando el progreso es 100 */}
         {progress === 100 && (
           <>
             <div className="onboard-card__stats">
@@ -84,11 +85,14 @@ const OnboardStep3: React.FC<OnboardStep3Props> = ({
           </>
         )}
 
-        <div className="onboard-card__actions onboard-card__actions--center">
-          <button className="onboard-card__btn onboard-card__btn--secondary" onClick={onGoToDashboard}>
-            Dashboard
-          </button>
-        </div>
+        {/* Muestra el botón solo cuando el progreso es 100 */}
+        {progress === 100 && (
+          <div className="onboard-card__actions onboard-card__actions--center">
+            <button className="onboard-card__btn onboard-card__btn--secondary" onClick={onGoToDashboard}>
+              Dashboard
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
