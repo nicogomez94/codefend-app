@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/_onboard.scss';
-// import { ReactComponent as CodefendLogo } from '../../assets/codefend-logo.svg';
-// import { ReactComponent as EyeIllustration } from '../../assets/eye-illustration.svg'; // Asume que tienes esta ilustración
+// Option 1: Default import if the SVG is exported as default
+import Ojo from '../../assets/red-eye.svg';
 
 interface OnboardStep2Props {
   domain: string;
@@ -25,7 +25,7 @@ const OnboardStep2: React.FC<OnboardStep2Props> = ({ domain, onAnalyze, onBack }
 
         <div className="onboard-card__illustration">
           {/* <EyeIllustration /> */}
-          <p style={{ fontSize: '4rem', textAlign: 'center' }}>👁️</p> {/* Placeholder */}
+          <img src={Ojo} alt="Eye Illustration" />
         </div>
 
         <div className="onboard-card__actions">

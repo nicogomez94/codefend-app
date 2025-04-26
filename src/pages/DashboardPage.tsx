@@ -27,12 +27,6 @@ const DashboardPage: React.FC = () => {
   const [fixedIssues, setFixedIssues] = useState(0);
   const [totalIssues, setTotalIssues] = useState(0);
   const [totalFindings, setTotalFindings] = useState(0);
-  const [riskLevels, setRiskLevels] = useState({
-    high: 0,
-    medium: 0,
-    low: 0,
-    info: 0
-  });
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval> | null = null;
@@ -63,12 +57,6 @@ const DashboardPage: React.FC = () => {
     setFixedIssues(5);
     setTotalIssues(17);
     setTotalFindings(26);
-    setRiskLevels({
-      high: 4,
-      medium: 10,
-      low: 20,
-      info: 60
-    });
     setAnalysisComplete(true);
   };
 
@@ -163,12 +151,7 @@ const DashboardPage: React.FC = () => {
           </div>
 
           <div className="dashboard__chart-section">
-            <RiskLevelChart 
-              highPercent={analysisComplete ? riskLevels.high : 0}
-              mediumPercent={analysisComplete ? riskLevels.medium : 0} 
-              lowPercent={analysisComplete ? riskLevels.low : 0}
-              intelPercent={analysisComplete ? riskLevels.info : 0}
-            />
+            <RiskLevelChart/>
           </div>
           
           <div className="dashboard__scan-section">

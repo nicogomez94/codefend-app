@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/_onboard.scss'; // Importaremos los estilos generales del onboard
+import './styles/_onboard.scss';
 // import { ReactComponent as CodefendLogo } from '../../assets/codefend-logo.svg'; // Asume que tienes el logo SVG
 // import { ReactComponent as ScanIcon } from '../../assets/scan-icon.svg'; // Asume que tienes un icono de scan
 // import { ReactComponent as FlagIcon } from '../../assets/flag-icon.svg'; // Asume que tienes un icono de bandera

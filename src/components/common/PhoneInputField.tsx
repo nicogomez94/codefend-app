@@ -30,8 +30,8 @@ const PhoneInputField: React.FC<PhoneInputFieldProps> = ({
   return (
     <div>
       <label htmlFor={id} className={labelClassName}>{label}</label>
-      <div style={{ display: 'flex' }} className="phone-input-container">
-        <select style={{ marginRight: '5px', padding: '0.5rem' }} defaultValue={defaultCountryCode}>
+      <div className="phone-input-container">
+        <select defaultValue={defaultCountryCode}>
           <option>+54</option>
           <option>+1</option>
         </select>
@@ -47,7 +47,7 @@ const PhoneInputField: React.FC<PhoneInputFieldProps> = ({
           aria-describedby={error ? `${id}-error` : undefined}
         />
       </div>
-      {error && <p id={`${id}-error`} className="onboarding-step__error" style={{ marginTop: '4px', color: 'red', fontSize: '0.875rem' }}>{error}</p>}
+      {error && <p id={`${id}-error`} className="onboarding-step__error">{error}</p>}
     </div>
   );
 };

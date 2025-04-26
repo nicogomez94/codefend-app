@@ -19,7 +19,7 @@
 .dashboard {
   &__two-column-layout {
     display: flex;
-    gap: $spacing-6;
+    gap: $spacing-3;
     
     @media (max-width: 1024px) {
       flex-direction: column;
@@ -30,14 +30,14 @@
     flex: 3; // Aproximadamente 60% del espacio
     display: flex;
     flex-direction: column;
-    gap: $spacing-6;
+    gap: $spacing-3;
   }
   
   &__column-right {
     flex: 2; // Aproximadamente 40% del espacio
     display: flex;
     flex-direction: column;
-    gap: $spacing-6;
+    gap: $spacing-3;
   }
 
   &__container {
@@ -57,7 +57,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: $spacing-4;
+    gap: $spacing-3;
     
     @media (max-width: 1280px) {
       flex-wrap: wrap;
@@ -97,7 +97,7 @@
     }
     
     &--half {
-      @include grid(2, $spacing-6); // Usa el mixin directamente
+      @include grid(2, $spacing-3); // Usa el mixin directamente
     }
 
     @media (max-width: 1024px) {
@@ -124,7 +124,7 @@
 .dashboard__container__resources {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: $spacing-6;
+  gap: $spacing-3;
   
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);

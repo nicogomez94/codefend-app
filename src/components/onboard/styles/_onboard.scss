@@ -165,7 +165,11 @@
 
     .onboard-card__illustration {
       margin: $spacing-4 auto;
-      max-width: 150px;
+      height: 100px;
+    }
+    .onboard-card__illustration img{
+      width: 20%;
+      height: auto; 
     }
   }
 

@@ -120,7 +120,7 @@
       height: 12px;
       margin-right: 0.5rem;
       border-radius: 50%;
-      background-color: #9ca3af;
+      background-color: $color-red-500;
     }
     
     &:contains('critical')::before {
