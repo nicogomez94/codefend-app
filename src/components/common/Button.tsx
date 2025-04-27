@@ -1,4 +1,3 @@
-// filepath: c:\Users\nicol\github\codefend-nico\codefend-test\src\components\common\Button.tsx
 import React from 'react';
 import './styles/Button.scss';
 

@@ -2,14 +2,13 @@
 @use '../../../styles/mixins' as *;
 
 .team-section {
-  // @include card;
   display: grid;
   grid-template-columns: 1fr 1fr; // Dos columnas iguales
   gap: $spacing-3;
   text-align: left;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; // Apilar en pantallas pequeñas
+    grid-template-columns: 1fr;
   }
 
   &__info-container,

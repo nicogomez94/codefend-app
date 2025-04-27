@@ -19,7 +19,6 @@ const DashboardPage: React.FC = () => {
   const [domainToScan] = useState('www.mercadolibre.com');
   const [scanProgress, setScanProgress] = useState(0);
   
-  // Estado para controlar si el análisis ha terminado
   const [analysisComplete, setAnalysisComplete] = useState(false);
   
   // Estados para datos del dashboard
@@ -37,7 +36,6 @@ const DashboardPage: React.FC = () => {
           if (prev >= 100) {
             if (interval) clearInterval(interval);
             
-            // Actualizar los datos cuando el análisis termine
             updateDashboardData();
             return 100;
           }
@@ -50,9 +48,7 @@ const DashboardPage: React.FC = () => {
     };
   }, [onboardStep]);
   
-  // Función para actualizar los datos una vez completado el análisis
   const updateDashboardData = () => {
-    // Simulación de datos del análisis
     setOpenIssues(12);
     setFixedIssues(5);
     setTotalIssues(17);
@@ -64,7 +60,7 @@ const DashboardPage: React.FC = () => {
     setOnboardStep(0);
     console.log("Ir directamente al dashboard");
     
-    // Si el análisis estaba en curso y se saltó, actualizamos los datos
+    // si el analisis estaba en curso y se saltó, actualizamos los datos
     if (scanProgress > 0 && scanProgress < 100) {
       updateDashboardData();
     }

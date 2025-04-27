@@ -1,6 +1,5 @@
-// filepath: c:\Users\nicol\github\codefend-nico\codefend-test\src\components\common\ProgressIndicator.tsx
 import React from 'react';
-import './styles/_progress-indicator.scss'; // crearemos este archivo
+import './styles/_progress-indicator.scss';
 
 interface ProgressIndicatorProps {
   totalSteps: number;

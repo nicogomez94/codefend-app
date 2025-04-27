@@ -1,5 +1,5 @@
-@use '../../../styles/variables' as *; // Ajusta la ruta según corresponda
-@use '../../../styles/mixins' as *; // Ajusta la ruta según corresponda
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .button {
   padding: 0.75rem 1.5rem;
@@ -18,11 +18,11 @@
   }
   
   &--primary {
-    background-color: #f56565; // rojo equivalente a red-500
+    background-color: #f56565;
     color: white;
     
     &:hover {
-      background-color: #e53e3e; // rojo más oscuro equivalente a red-600
+      background-color: #e53e3e; // rojo mas 
     }
     
     &:focus {
@@ -31,8 +31,8 @@
   }
   
   &--secondary {
-    background-color: #edf2f7; // gris claro equivalente a gray-200
-    color: #4a5568; // gray-700
+    background-color: #edf2f7; //
+    color: #4a5568; 
     
     &:hover {
       background-color: #e2e8f0; // gray-300

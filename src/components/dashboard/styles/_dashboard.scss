@@ -2,7 +2,6 @@
 @use '../../../styles/mixins' as *; 
 @use 'sass:color'; 
 
-// Usa @forward para re-exportar o @use para cargar estilos de componentes
 @use 'layout';
 @use 'sidebar';
 @use 'topbar';
@@ -12,9 +11,8 @@
 @use 'scanprogress';
 @use 'riskchart';
 @use 'team';
-@use 'issuestable'; // Añadir el nuevo archivo
+@use 'issuestable';
 
-// Dashboard page specific styles
 
 .dashboard {
   &__two-column-layout {
@@ -80,7 +78,7 @@
   }
 
   &__resource-cards {
-    margin-bottom: 0; // Eliminamos el margen inferior previo
+    margin-bottom: 0; 
   }
 
   &__grid {
@@ -97,7 +95,7 @@
     }
     
     &--half {
-      @include grid(2, $spacing-3); // Usa el mixin directamente
+      @include grid(2, $spacing-3);
     }
 
     @media (max-width: 1024px) {

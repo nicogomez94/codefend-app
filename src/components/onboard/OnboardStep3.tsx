@@ -6,7 +6,7 @@ interface OnboardStep3Props {
   domain: string;
   progress: number; // Porcentaje de 0 a 100
   totalFindings: number;
-  analyzingFindings: string; // e.g., "12/26"
+  analyzingFindings: string;
   phase: string;
   estimatedTime: string;
   onGoToDashboard: () => void;
@@ -63,7 +63,7 @@ const OnboardStep3: React.FC<OnboardStep3Props> = ({
           </svg>
         </div>
 
-        {/* Muestra las estadísticas solo cuando el progreso es 100 */}
+        {/* muestra las estadisticas */}
         {progress === 100 && (
           <>
             <div className="onboard-card__stats">
@@ -85,7 +85,7 @@ const OnboardStep3: React.FC<OnboardStep3Props> = ({
           </>
         )}
 
-        {/* Muestra el botón solo cuando el progreso es 100 */}
+        {/*solo cuando el progreso es 100 */}
         {progress === 100 && (
           <div className="onboard-card__actions onboard-card__actions--center">
             <button className="onboard-card__btn onboard-card__btn--secondary" onClick={onGoToDashboard}>
