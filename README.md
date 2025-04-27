@@ -22,7 +22,8 @@ Este repositorio contiene la solución al desafío técnico para el rol de **Des
    - Vista populada con datos simulados.
    - Vista sin popular en caso de cerrar el modal de onboarding.
    - Componentes reutilizables para tarjetas de estadísticas, gráficos y tablas.
-   - Funcionalidad de Ver Perfil con Modal para ver datos y cerrar sesión.
+   - Funcionalidad de Ver Perfil con Modal para ver datos.
+   - Funcionalidad de "cerrar sesión", para que se reinicie la prueba.
 
 3. **Manejo de Estados y Errores**:
    - Validaciones en tiempo real en los formularios.
@@ -35,6 +36,10 @@ Este repositorio contiene la solución al desafío técnico para el rol de **Des
 codefend-test/
 ├── src/
 │   ├── components/       # Componentes reutilizables y específicos
+│   │   ├── common/       # Componentes genéricos como botones, inputs y otros elementos reutilizables
+│   │   ├── dashboard/    # Componentes específicos para la pantalla de dashboard
+│   │   ├── onboarding/   # Componentes relacionados con el flujo de creación de usuario
+│   │   ├── onboard/      # Componentes relacionados con el flujo de escaneo y analisis
 │   ├── pages/            # Páginas principales (Onboarding, Dashboard)
 │   ├── store/            # Manejo de estado global con Zustand
 │   ├── styles/           # Estilos globales y específicos (Sass)
